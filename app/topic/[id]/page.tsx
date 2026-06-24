@@ -3,7 +3,8 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 
 const KingdomScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 
@@ -24,15 +25,24 @@ function getLevelInfo(xp: number) {
 
 export default function TopicPage() {
   const router = useRouter();
+  const pathname = usePathname();
   const [xp, setXp] = useState(0);
 
-  useEffect(() => {
-    const stored = parseInt(localStorage.getItem("cornea_xp") ?? "0", 10);
-    setXp(stored);
-    const onFocus = () => setXp(parseInt(localStorage.getItem("cornea_xp") ?? "0", 10));
-    window.addEventListener("focus", onFocus);
-    return () => window.removeEventListener("focus", onFocus);
+  const read = useCallback(() => {
+    setXp(parseInt(localStorage.getItem("cornea_xp") ?? "0", 10));
   }, []);
+
+  useEffect(() => {
+    read();
+    window.addEventListener("focus", read);
+    window.addEventListener("storage", read);
+    document.addEventListener("visibilitychange", read);
+    return () => {
+      window.removeEventListener("focus", read);
+      window.removeEventListener("storage", read);
+      document.removeEventListener("visibilitychange", read);
+    };
+  }, [pathname, read]);
 
   const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));
