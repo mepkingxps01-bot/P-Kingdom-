@@ -69,6 +69,8 @@ const { level, progress, needed } = getLevelInfo(xp);
           </button>
         </div>
 
+        <p className="text-xs text-slate-700 text-center mt-4">Kingdom Code: <span className="text-slate-500 font-mono">A1</span></p>
+
       </section>
     </main>
   );
