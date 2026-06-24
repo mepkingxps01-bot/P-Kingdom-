@@ -245,15 +245,22 @@ export default function MCQPage() {
     setSelected((prev) => ({ ...prev, [qId]: optIdx }));
   };
 
+  const [saveError, setSaveError] = useState("");
+
   const handleSubmit = async () => {
     setSubmitted(true);
     const correct = questions.filter((q) => selected[q.id] === q.correct).length;
     const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
       + (correct === questions.length ? 20 : correct >= 8 ? 10 : 0);
     const uid = getCode();
-    const { data } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", uid).single();
+    const { data, error: selectError } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", uid).single();
+    if (selectError && selectError.code !== "PGRST116") {
+      setSaveError(`Select error: ${selectError.message}`);
+      return;
+    }
     const prev = data?.cornea_xp ?? 0;
-    await supabase.from("pkingdom_xp").upsert({ uid, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
+    const { error: upsertError } = await supabase.from("pkingdom_xp").upsert({ uid, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
+    if (upsertError) setSaveError(`Save error: ${upsertError.message}`);
   };
 
   const correctCount = questions.filter((q) => selected[q.id] === q.correct).length;
@@ -338,6 +345,7 @@ export default function MCQPage() {
               {correctCount < 8 && " — Keep studying!"}
             </p>
             <p className="text-xs text-slate-600 mb-6">Your Cornea Kingdom has grown.</p>
+            {saveError && <p className="text-xs text-red-400 mb-3">{saveError}</p>}
             <div className="flex gap-3 justify-center">
               <Link href="/topic/cornea" className="bg-cyan-600 hover:bg-cyan-500 transition-colors text-white text-sm font-semibold px-6 py-3 rounded-xl">
                 View Kingdom
