@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 type Question = {
   id: number;
@@ -243,13 +244,17 @@ export default function MCQPage() {
     setSelected((prev) => ({ ...prev, [qId]: optIdx }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSubmitted(true);
+    const correct = questions.filter((q) => selected[q.id] === q.correct).length;
     const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
-      + (questions.filter((q) => selected[q.id] === q.correct).length === questions.length ? 20
-        : questions.filter((q) => selected[q.id] === q.correct).length >= 8 ? 10 : 0);
-    const prev = parseInt(localStorage.getItem("cornea_xp") ?? "0", 10);
-    localStorage.setItem("cornea_xp", String(prev + earned));
+      + (correct === questions.length ? 20 : correct >= 8 ? 10 : 0);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data } = await supabase.from("xp").select("cornea_xp").eq("user_id", user.id).single();
+      const prev = data?.cornea_xp ?? 0;
+      await supabase.from("xp").upsert({ user_id: user.id, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
+    }
   };
 
   const correctCount = questions.filter((q) => selected[q.id] === q.correct).length;

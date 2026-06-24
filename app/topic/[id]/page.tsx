@@ -2,9 +2,9 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
-import { usePathname } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 const KingdomScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 
@@ -18,31 +18,27 @@ const LEVELS = [
 
 function getLevelInfo(xp: number) {
   const current = [...LEVELS].reverse().find((l) => xp >= l.min) ?? LEVELS[0];
-  const progress = xp - current.min;
-  const needed = current.max - current.min;
-  return { level: current.level, progress, needed, xp };
+  return { level: current.level, progress: xp - current.min, needed: current.max - current.min, xp };
 }
 
 export default function TopicPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [xp, setXp] = useState(0);
+  const [user, setUser] = useState<{ id: string } | null>(null);
 
-  const read = useCallback(() => {
-    setXp(parseInt(localStorage.getItem("cornea_xp") ?? "0", 10));
+  const loadXp = useCallback(async (userId: string) => {
+    const { data } = await supabase.from("xp").select("cornea_xp").eq("user_id", userId).single();
+    if (data) setXp(data.cornea_xp);
   }, []);
 
   useEffect(() => {
-    read();
-    window.addEventListener("focus", read);
-    window.addEventListener("storage", read);
-    document.addEventListener("visibilitychange", read);
-    return () => {
-      window.removeEventListener("focus", read);
-      window.removeEventListener("storage", read);
-      document.removeEventListener("visibilitychange", read);
-    };
-  }, [pathname, read]);
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) { router.push("/auth"); return; }
+      setUser(data.user);
+      loadXp(data.user.id);
+    });
+  }, [pathname, loadXp, router]);
 
   const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));
