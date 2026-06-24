@@ -34,7 +34,7 @@ export default function TopicPage() {
   const loadXp = useCallback(async () => {
     const uid = getUid();
     setCode(shortCode(uid));
-    const { data } = await supabase.from("xp").select("cornea_xp").eq("uid", uid).single();
+    const { data } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", uid).single();
     if (data) setXp(data.cornea_xp);
   }, []);
 
