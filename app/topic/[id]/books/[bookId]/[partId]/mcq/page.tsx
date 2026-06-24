@@ -243,7 +243,14 @@ export default function MCQPage() {
     setSelected((prev) => ({ ...prev, [qId]: optIdx }));
   };
 
-  const handleSubmit = () => setSubmitted(true);
+  const handleSubmit = () => {
+    setSubmitted(true);
+    const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
+      + (questions.filter((q) => selected[q.id] === q.correct).length === questions.length ? 20
+        : questions.filter((q) => selected[q.id] === q.correct).length >= 8 ? 10 : 0);
+    const prev = parseInt(localStorage.getItem("cornea_xp") ?? "0", 10);
+    localStorage.setItem("cornea_xp", String(prev + earned));
+  };
 
   const correctCount = questions.filter((q) => selected[q.id] === q.correct).length;
   const xp = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)

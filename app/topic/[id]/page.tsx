@@ -3,11 +3,39 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const KingdomScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 
+const LEVELS = [
+  { level: 1, min: 0, max: 150 },
+  { level: 2, min: 150, max: 350 },
+  { level: 3, min: 350, max: 600 },
+  { level: 4, min: 600, max: 900 },
+  { level: 5, min: 900, max: 1200 },
+];
+
+function getLevelInfo(xp: number) {
+  const current = [...LEVELS].reverse().find((l) => xp >= l.min) ?? LEVELS[0];
+  const progress = xp - current.min;
+  const needed = current.max - current.min;
+  return { level: current.level, progress, needed, xp };
+}
+
 export default function TopicPage() {
   const router = useRouter();
+  const [xp, setXp] = useState(0);
+
+  useEffect(() => {
+    const stored = parseInt(localStorage.getItem("cornea_xp") ?? "0", 10);
+    setXp(stored);
+    const onFocus = () => setXp(parseInt(localStorage.getItem("cornea_xp") ?? "0", 10));
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, []);
+
+  const { level, progress, needed } = getLevelInfo(xp);
+  const pct = Math.min(100, Math.round((progress / needed) * 100));
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
@@ -18,7 +46,7 @@ export default function TopicPage() {
         <span className="text-slate-700">|</span>
         <h1 className="text-lg font-semibold">Cornea</h1>
         <span className="ml-auto text-xs bg-cyan-900/50 text-cyan-300 px-2.5 py-1 rounded-full">
-          Lv. 1
+          Lv. {level}
         </span>
       </header>
 
@@ -29,9 +57,9 @@ export default function TopicPage() {
 
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-slate-500">0 / 150 XP to next level</p>
+            <p className="text-xs text-slate-500">{xp} XP · {progress} / {needed} XP to Lv. {level + 1}</p>
             <div className="w-48 h-1.5 rounded-full bg-slate-800 mt-1.5 overflow-hidden">
-              <div className="h-full rounded-full bg-cyan-500/60" style={{ width: "0%" }} />
+              <div className="h-full rounded-full bg-cyan-500/60 transition-all duration-700" style={{ width: `${pct}%` }} />
             </div>
           </div>
           <button
