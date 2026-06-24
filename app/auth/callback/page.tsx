@@ -8,28 +8,17 @@ export default function AuthCallback() {
   const router = useRouter();
 
   useEffect(() => {
-    const hash = window.location.hash;
-
-    if (hash) {
-      const params = new URLSearchParams(hash.substring(1));
-      const accessToken = params.get("access_token");
-      const refreshToken = params.get("refresh_token");
-
-      if (accessToken && refreshToken) {
-        supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken })
-          .then(({ data }) => {
-            if (data.session) router.push("/topic/cornea");
-            else router.push("/auth");
-          });
-        return;
+    // Give Supabase 1 second to auto-detect the hash and store the session
+    const timer = setTimeout(async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        router.push("/topic/cornea");
+      } else {
+        router.push("/auth");
       }
-    }
+    }, 1000);
 
-    // No hash — check if session already exists
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) router.push("/topic/cornea");
-      else router.push("/auth");
-    });
+    return () => clearTimeout(timer);
   }, [router]);
 
   return (
