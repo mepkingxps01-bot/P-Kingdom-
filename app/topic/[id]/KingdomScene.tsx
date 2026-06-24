@@ -22,7 +22,7 @@ export default function KingdomScene() {
     const camera = new THREE.PerspectiveCamera(45, 2, 0.1, 200);
 
     function resize() {
-      const w = canvas.parentElement?.clientWidth ?? 600;
+      const w = canvas!.parentElement?.clientWidth ?? 600;
       const h = Math.round(w * 0.56);
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
