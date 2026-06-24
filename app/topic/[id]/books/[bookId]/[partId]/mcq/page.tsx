@@ -249,7 +249,8 @@ export default function MCQPage() {
     const correct = questions.filter((q) => selected[q.id] === q.correct).length;
     const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
       + (correct === questions.length ? 20 : correct >= 8 ? 10 : 0);
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { session } } = await supabase.auth.getSession();
+    const user = session?.user;
     if (!user) return;
     const { data } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("user_id", user.id).single();
     const prev = data?.cornea_xp ?? 0;

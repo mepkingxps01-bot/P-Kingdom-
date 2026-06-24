@@ -33,11 +33,19 @@ export default function TopicPage() {
   }, []);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) { router.push("/auth"); return; }
-      setEmail(data.user.email ?? "");
-      loadXp(data.user.id);
+    supabase.auth.getSession().then(({ data }) => {
+      if (!data.session) { router.push("/auth"); return; }
+      setEmail(data.session.user.email ?? "");
+      loadXp(data.session.user.id);
     });
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) { router.push("/auth"); return; }
+      setEmail(session.user.email ?? "");
+      loadXp(session.user.id);
+    });
+
+    return () => listener.subscription.unsubscribe();
   }, [pathname, loadXp, router]);
 
   const signOut = async () => {
