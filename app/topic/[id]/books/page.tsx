@@ -14,16 +14,6 @@ const books = [
     questions: 0,
     tag: "Core Textbook",
   },
-  {
-    id: "cornea-mannis-part1",
-    title: "Cornea Part 1: Basic Science",
-    author: "Mannis & Holland",
-    edition: "5th Edition",
-    cover: "/books/cornea-mannis-part1.svg",
-    chapters: 0,
-    questions: 25,
-    tag: "Part 1",
-  },
 ];
 
 export default function BooksPage() {
