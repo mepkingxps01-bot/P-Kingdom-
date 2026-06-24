@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { getCode } from "@/lib/uid";
+// Kingdom code is fixed — all devices share the same XP automatically
 
 const KingdomScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 
@@ -26,11 +27,6 @@ export default function TopicPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [xp, setXp] = useState(0);
-  const [code, setCode] = useState("");
-  const [restoreInput, setRestoreInput] = useState("");
-  const [showRestore, setShowRestore] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [restoreMsg, setRestoreMsg] = useState("");
 
   const loadXp = useCallback(async (c: string) => {
     const { data } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", c).single();
@@ -38,34 +34,10 @@ export default function TopicPage() {
   }, []);
 
   useEffect(() => {
-    const c = getCode();
-    setCode(c);
-    loadXp(c);
+    loadXp(getCode());
   }, [pathname, loadXp]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleRestore = async () => {
-    const input = restoreInput.trim().toUpperCase();
-    if (input.length < 5) return;
-    const { data } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", input).single();
-    if (data) {
-      localStorage.setItem("pkingdom_code", input);
-      setCode(input);
-      setXp(data.cornea_xp);
-      setShowRestore(false);
-      setRestoreInput("");
-      setRestoreMsg("");
-    } else {
-      setRestoreMsg("Code not found. Check and try again.");
-    }
-  };
-
-  const { level, progress, needed } = getLevelInfo(xp);
+const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));
 
   return (
@@ -97,35 +69,6 @@ export default function TopicPage() {
           </button>
         </div>
 
-        <div className="border border-slate-800 rounded-xl px-4 py-3 bg-slate-900/50">
-          <p className="text-xs text-slate-500 mb-2">🔑 Your Kingdom Code — type this on any device to restore your progress</p>
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold tracking-widest text-cyan-300 bg-slate-800 px-4 py-2 rounded-lg">{code}</span>
-            <button onClick={handleCopy} className="text-xs text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 transition-colors px-3 py-2 rounded-lg">
-              {copied ? "Copied!" : "Copy"}
-            </button>
-            <button onClick={() => { setShowRestore(!showRestore); setRestoreMsg(""); }} className="text-xs text-slate-400 hover:text-white transition-colors px-2 py-2">
-              Restore
-            </button>
-          </div>
-          {showRestore && (
-            <div className="mt-3 space-y-2">
-              <div className="flex gap-2">
-                <input
-                  value={restoreInput}
-                  onChange={(e) => setRestoreInput(e.target.value.toUpperCase())}
-                  maxLength={5}
-                  placeholder="Enter code (e.g. K7392)"
-                  className="flex-1 text-sm font-mono tracking-widest bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-600 uppercase"
-                />
-                <button onClick={handleRestore} className="text-sm bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-colors">
-                  Apply
-                </button>
-              </div>
-              {restoreMsg && <p className="text-xs text-red-400">{restoreMsg}</p>}
-            </div>
-          )}
-        </div>
       </section>
     </main>
   );
