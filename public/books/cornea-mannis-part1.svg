@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="960" viewBox="0 0 400 960">
+<rect x="0" y="0" width="400" height="960" rx="6" fill="#0a1628"/>
+<rect x="0" y="0" width="400" height="12" fill="#1a3a6e"/>
+<rect x="0" y="12" width="400" height="4" fill="#2d6abf"/>
+<rect x="0" y="16" width="400" height="2" fill="#4a90d9"/>
+<rect x="0" y="868" width="400" height="12" fill="#1a3a6e"/>
+<rect x="0" y="18" width="400" height="420" fill="#0d1f3c"/>
+
+<ellipse cx="200" cy="180" rx="140" ry="140" fill="#0a1628" stroke="#1a3a6e" stroke-width="1"/>
+<ellipse cx="200" cy="180" rx="110" ry="110" fill="#0e2244"/>
+<ellipse cx="200" cy="180" rx="85" ry="85" fill="#0a1628" stroke="#1e4080" stroke-width="0.5"/>
+<circle cx="200" cy="180" r="38" fill="#1a2a50"/>
+<circle cx="200" cy="180" r="34" fill="#0a0f1e"/>
+<circle cx="200" cy="180" r="28" fill="#0d1830"/>
+<circle cx="200" cy="180" r="16" fill="#040810"/>
+<circle cx="200" cy="180" r="6" fill="#ffffff" opacity="0.9"/>
+<circle cx="208" cy="172" r="3" fill="#ffffff" opacity="0.4"/>
+
+<path d="M100 180 Q130 165 160 168 Q180 170 190 175" fill="none" stroke="#4a7abf" stroke-width="1.5" opacity="0.7"/>
+<path d="M105 195 Q135 183 165 183 Q185 183 195 180" fill="none" stroke="#4a7abf" stroke-width="1" opacity="0.5"/>
+<path d="M210 172 Q220 165 235 162 Q255 158 290 164" fill="none" stroke="#4a7abf" stroke-width="1.5" opacity="0.7"/>
+<path d="M208 182 Q220 178 238 175 Q258 171 292 174" fill="none" stroke="#4a7abf" stroke-width="1" opacity="0.5"/>
+<path d="M140 108 Q170 95 200 92 Q230 95 260 108" fill="none" stroke="#2d6abf" stroke-width="1.5" opacity="0.6"/>
+<path d="M138 254 Q170 267 200 270 Q230 267 262 254" fill="none" stroke="#2d6abf" stroke-width="1.5" opacity="0.6"/>
+<ellipse cx="200" cy="180" rx="110" ry="110" fill="none" stroke="#1e3a6e" stroke-width="0.5" opacity="0.5"/>
+<ellipse cx="200" cy="180" rx="85" ry="85" fill="none" stroke="#1e3a6e" stroke-width="0.5" opacity="0.4"/>
+
+<rect x="0" y="438" width="400" height="522" fill="#f5f0e8"/>
+<rect x="0" y="438" width="400" height="3" fill="#2d6abf"/>
+
+<rect x="25" y="465" width="350" height="28" fill="#1a3a6e"/>
+<text x="200" y="485" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="3">CORNEA</text>
+
+<text x="25" y="530" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#0a1628" letter-spacing="1">Part 1</text>
+<rect x="25" y="540" width="120" height="3" fill="#2d6abf"/>
+
+<text x="25" y="575" font-family="Georgia, serif" font-size="13" fill="#1a3a6e" font-weight="700">Basic Science</text>
+<text x="25" y="600" font-family="Arial, sans-serif" font-size="11" fill="#333344">Cornea · Sclera · Ocular Adnexa</text>
+<text x="25" y="618" font-family="Arial, sans-serif" font-size="11" fill="#333344">Anatomy · Physiology</text>
+<text x="25" y="636" font-family="Arial, sans-serif" font-size="11" fill="#333344">and Pathophysiologic Responses</text>
+
+<rect x="25" y="654" width="350" height="0.5" fill="#c0b090"/>
+<text x="25" y="678" font-family="Georgia, serif" font-size="13" fill="#0a1628" font-weight="700">Mark J. Mannis MD FACS</text>
+<text x="25" y="696" font-family="Georgia, serif" font-size="13" fill="#0a1628" font-weight="700">Edward J. Holland MD</text>
+<rect x="25" y="710" width="350" height="0.5" fill="#c0b090"/>
+<text x="25" y="732" font-family="Arial, sans-serif" font-size="10" fill="#666655" letter-spacing="1">FIFTH EDITION</text>
+
+<rect x="0" y="12" width="10" height="856" fill="#1a3a6e"/>
+</svg>
