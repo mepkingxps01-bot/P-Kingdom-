@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { getUid } from "@/lib/uid";
 
 type Question = {
   id: number;
@@ -249,12 +250,10 @@ export default function MCQPage() {
     const correct = questions.filter((q) => selected[q.id] === q.correct).length;
     const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
       + (correct === questions.length ? 20 : correct >= 8 ? 10 : 0);
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data } = await supabase.from("xp").select("cornea_xp").eq("user_id", user.id).single();
-      const prev = data?.cornea_xp ?? 0;
-      await supabase.from("xp").upsert({ user_id: user.id, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
-    }
+    const uid = getUid();
+    const { data } = await supabase.from("xp").select("cornea_xp").eq("uid", uid).single();
+    const prev = data?.cornea_xp ?? 0;
+    await supabase.from("xp").upsert({ uid, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
   };
 
   const correctCount = questions.filter((q) => selected[q.id] === q.correct).length;

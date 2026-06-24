@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
+import { getUid, shortCode } from "@/lib/uid";
 
 const KingdomScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 
@@ -18,27 +19,41 @@ const LEVELS = [
 
 function getLevelInfo(xp: number) {
   const current = [...LEVELS].reverse().find((l) => xp >= l.min) ?? LEVELS[0];
-  return { level: current.level, progress: xp - current.min, needed: current.max - current.min, xp };
+  return { level: current.level, progress: xp - current.min, needed: current.max - current.min };
 }
 
 export default function TopicPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [xp, setXp] = useState(0);
-  const [user, setUser] = useState<{ id: string } | null>(null);
+  const [code, setCode] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [restoreInput, setRestoreInput] = useState("");
+  const [showRestore, setShowRestore] = useState(false);
 
-  const loadXp = useCallback(async (userId: string) => {
-    const { data } = await supabase.from("xp").select("cornea_xp").eq("user_id", userId).single();
+  const loadXp = useCallback(async () => {
+    const uid = getUid();
+    setCode(shortCode(uid));
+    const { data } = await supabase.from("xp").select("cornea_xp").eq("uid", uid).single();
     if (data) setXp(data.cornea_xp);
   }, []);
 
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) { router.push("/auth"); return; }
-      setUser(data.user);
-      loadXp(data.user.id);
-    });
-  }, [pathname, loadXp, router]);
+  useEffect(() => { loadXp(); }, [pathname, loadXp]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(getUid());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleRestore = async () => {
+    const full = restoreInput.trim();
+    if (full.length < 10) return;
+    localStorage.setItem("pkingdom_uid", full);
+    setShowRestore(false);
+    setRestoreInput("");
+    await loadXp();
+  };
 
   const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));
@@ -46,14 +61,10 @@ export default function TopicPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <header className="border-b border-slate-800 px-6 py-4 flex items-center gap-3">
-        <Link href="/" className="text-slate-400 hover:text-white transition-colors text-sm">
-          ← Library
-        </Link>
+        <Link href="/" className="text-slate-400 hover:text-white transition-colors text-sm">← Library</Link>
         <span className="text-slate-700">|</span>
         <h1 className="text-lg font-semibold">Cornea</h1>
-        <span className="ml-auto text-xs bg-cyan-900/50 text-cyan-300 px-2.5 py-1 rounded-full">
-          Lv. {level}
-        </span>
+        <span className="ml-auto text-xs bg-cyan-900/50 text-cyan-300 px-2.5 py-1 rounded-full">Lv. {level}</span>
       </header>
 
       <section className="max-w-3xl mx-auto px-6 py-8">
@@ -61,7 +72,7 @@ export default function TopicPage() {
           <KingdomScene />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-xs text-slate-500">{xp} XP · {progress} / {needed} XP to Lv. {level + 1}</p>
             <div className="w-48 h-1.5 rounded-full bg-slate-800 mt-1.5 overflow-hidden">
@@ -74,6 +85,32 @@ export default function TopicPage() {
           >
             🏰 Build Kingdom
           </button>
+        </div>
+
+        <div className="border border-slate-800 rounded-xl px-4 py-3 bg-slate-900/50">
+          <p className="text-xs text-slate-500 mb-2">🔑 Kingdom Code — use this to restore your progress on another device</p>
+          <div className="flex items-center gap-2">
+            <code className="text-xs text-cyan-400 bg-slate-800 px-3 py-1.5 rounded-lg flex-1 truncate">{getUid()}</code>
+            <button onClick={handleCopy} className="text-xs text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 transition-colors px-3 py-1.5 rounded-lg shrink-0">
+              {copied ? "Copied!" : "Copy"}
+            </button>
+            <button onClick={() => setShowRestore(!showRestore)} className="text-xs text-slate-400 hover:text-white transition-colors px-2 py-1.5 shrink-0">
+              Restore
+            </button>
+          </div>
+          {showRestore && (
+            <div className="flex gap-2 mt-2">
+              <input
+                value={restoreInput}
+                onChange={(e) => setRestoreInput(e.target.value)}
+                placeholder="Paste your Kingdom Code here"
+                className="flex-1 text-xs bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-white focus:outline-none focus:border-cyan-600"
+              />
+              <button onClick={handleRestore} className="text-xs bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-1.5 rounded-lg transition-colors">
+                Apply
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </main>
