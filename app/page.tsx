@@ -16,6 +16,21 @@ const topics = [
     icon: "🔷",
     xpTarget: 150,
   },
+  {
+    id: "retina",
+    name: "Retina",
+    description: "Anatomy, disease & surgery of the retina",
+    books: 1,
+    xp: 0,
+    level: 1,
+    gradient: "from-amber-950 to-slate-900",
+    accent: "text-amber-300",
+    border: "border-amber-800/40",
+    badge: "bg-amber-900/50 text-amber-300",
+    bar: "bg-amber-500/60",
+    icon: "🔶",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {
