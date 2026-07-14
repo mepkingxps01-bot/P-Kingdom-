@@ -2,8 +2,10 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getCode } from "@/lib/uid";
+import { getTopic } from "@/lib/topics";
 
 type Question = {
   id: number;
@@ -236,6 +238,9 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function MCQPage() {
+  const params = useParams();
+  const topicId = Array.isArray(params.id) ? params.id[0] : params.id ?? "cornea";
+  const xpColumn = getTopic(topicId).xpColumn;
   const questions = useMemo(() => shuffle(questionPool).slice(0, 10), []);
   const [selected, setSelected] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -253,13 +258,15 @@ export default function MCQPage() {
     const earned = questions.reduce((acc, q) => acc + (selected[q.id] === q.correct ? 3 : 1), 0)
       + (correct === questions.length ? 20 : correct >= 8 ? 10 : 0);
     const uid = getCode();
-    const { data, error: selectError } = await supabase.from("pkingdom_xp").select("cornea_xp").eq("uid", uid).single();
+    const { data, error: selectError } = await supabase.from("pkingdom_xp").select(xpColumn).eq("uid", uid).single();
     if (selectError && selectError.code !== "PGRST116") {
       setSaveError(`Select error: ${selectError.message}`);
       return;
     }
-    const prev = data?.cornea_xp ?? 0;
-    const { error: upsertError } = await supabase.from("pkingdom_xp").upsert({ uid, cornea_xp: prev + earned, updated_at: new Date().toISOString() });
+    const prev = (data as unknown as Record<string, number> | null)?.[xpColumn] ?? 0;
+    const { error: upsertError } = await supabase
+      .from("pkingdom_xp")
+      .upsert({ uid, [xpColumn]: prev + earned, updated_at: new Date().toISOString() });
     if (upsertError) setSaveError(`Save error: ${upsertError.message}`);
   };
 
