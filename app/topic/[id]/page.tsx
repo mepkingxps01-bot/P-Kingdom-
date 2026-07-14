@@ -35,7 +35,8 @@ export default function TopicPage() {
 
   const loadXp = useCallback(async (c: string) => {
     const { data } = await supabase.from("pkingdom_xp").select(topic.xpColumn).eq("uid", c).single();
-    if (data) setXp((data as Record<string, number>)[topic.xpColumn] ?? 0);
+    const row = data as unknown as Record<string, number> | null;
+    if (row) setXp(row[topic.xpColumn] ?? 0);
   }, [topic.xpColumn]);
 
   useEffect(() => {
