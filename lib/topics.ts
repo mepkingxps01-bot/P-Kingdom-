@@ -6,6 +6,12 @@ export type TopicConfig = {
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
+  accentBright: string; // brighter accent, e.g. "text-cyan-400"
+  answerText: string; // reveal-answer text, e.g. "text-cyan-200"
+  optionHover: string; // MCQ option idle hover, full literal
+  optionSelected: string; // MCQ option selected state, full literal
+  mcqGradient: string; // Build-Kingdom CTA gradient, full literal
+  resultBorder: string; // result card border, e.g. "border-cyan-800/40"
   badge: string;
   bar: string;
   buttonBg: string;
@@ -20,6 +26,12 @@ export const TOPICS: Record<string, TopicConfig> = {
     scene: "cornea",
     accentText: "text-cyan-300",
     accentHover: "group-hover:text-cyan-300",
+    accentBright: "text-cyan-400",
+    answerText: "text-cyan-200",
+    optionHover: "hover:border-cyan-700 hover:bg-cyan-950/20",
+    optionSelected: "border-cyan-500 bg-cyan-950/30 text-cyan-200",
+    mcqGradient: "from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 shadow-cyan-950/60",
+    resultBorder: "border-cyan-800/40",
     badge: "bg-cyan-900/50 text-cyan-300",
     bar: "bg-cyan-500/60",
     buttonBg: "bg-cyan-600 hover:bg-cyan-500 shadow-cyan-950/50",
@@ -32,6 +44,12 @@ export const TOPICS: Record<string, TopicConfig> = {
     scene: "retina",
     accentText: "text-amber-300",
     accentHover: "group-hover:text-amber-300",
+    accentBright: "text-amber-400",
+    answerText: "text-amber-200",
+    optionHover: "hover:border-amber-700 hover:bg-amber-950/20",
+    optionSelected: "border-amber-500 bg-amber-950/30 text-amber-200",
+    mcqGradient: "from-amber-600 to-orange-700 hover:from-amber-500 hover:to-orange-600 shadow-amber-950/60",
+    resultBorder: "border-amber-800/40",
     badge: "bg-amber-900/50 text-amber-300",
     bar: "bg-amber-500/60",
     buttonBg: "bg-amber-600 hover:bg-amber-500 shadow-amber-950/50",
@@ -101,32 +119,32 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
     parts: [
       {
         id: "part1",
-        title: "Part 1: Retinal Imaging & Diagnostics",
+        title: "Part 1: Viral & Necrotizing Retinitis",
+        subtitle: "CMV Retinitis · Acute Retinal Necrosis (ARN) · Progressive Outer Retinal Necrosis (PORN)",
+        questions: 25,
+        mcq: 30,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Part 2: Retinal Imaging & Diagnostics",
         subtitle: "Anatomy · Physiology · OCT · Angiography · Autofluorescence · Electrophysiology",
         questions: 0,
         mcq: 0,
         status: "coming",
       },
       {
-        id: "part2",
-        title: "Part 2: Retinal & Choroidal Vascular Disease",
+        id: "part3",
+        title: "Part 3: Retinal & Choroidal Vascular Disease",
         subtitle: "Diabetic Retinopathy · Vein & Artery Occlusions · Retinopathy of Prematurity",
         questions: 0,
         mcq: 0,
         status: "coming",
       },
       {
-        id: "part3",
-        title: "Part 3: Age-Related Macular Degeneration",
-        subtitle: "Drusen · Geographic Atrophy · Choroidal Neovascularisation · Anti-VEGF",
-        questions: 0,
-        mcq: 0,
-        status: "coming",
-      },
-      {
         id: "part4",
-        title: "Part 4: Inflammation, Infection & Uveitis",
-        subtitle: "Posterior Uveitis · Endophthalmitis · White Dot Syndromes",
+        title: "Part 4: Age-Related Macular Degeneration",
+        subtitle: "Drusen · Geographic Atrophy · Choroidal Neovascularisation · Anti-VEGF",
         questions: 0,
         mcq: 0,
         status: "coming",
@@ -153,4 +171,8 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
 
 export function getBookDetail(bookId: string): BookDetail {
   return BOOK_DETAILS[bookId] ?? BOOK_DETAILS["cornea-mannis"];
+}
+
+export function getPart(bookId: string, partId: string): Part | undefined {
+  return getBookDetail(bookId).parts.find((p) => p.id === partId);
 }
