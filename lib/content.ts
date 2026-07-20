@@ -397,3 +397,14 @@ export function getRecall(topicId: string, bookId: string, partId: string): Reca
 export function getMcqPool(topicId: string, bookId: string, partId: string): MCQ[] {
   return MCQS[`${topicId}/${bookId}/${partId}`] ?? [];
 }
+
+// All MCQs across every playable part/book of a topic, combined for an
+// exam-style session. IDs are re-numbered so questions from different parts
+// (which each start at id 1) stay unique for React keys and answer tracking.
+export function getTopicMcqPool(topicId: string): MCQ[] {
+  const prefix = `${topicId}/`;
+  return Object.entries(MCQS)
+    .filter(([key]) => key.startsWith(prefix))
+    .flatMap(([, questions]) => questions)
+    .map((q, i) => ({ ...q, id: i + 1 }));
+}

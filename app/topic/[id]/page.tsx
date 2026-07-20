@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import { supabase } from "@/lib/supabase";
 import { getCode } from "@/lib/uid";
 import { getTopic } from "@/lib/topics";
+import { getTopicMcqPool } from "@/lib/content";
 // Kingdom code is fixed — all devices share the same XP automatically
 
 const CorneaScene = dynamic(() => import("./KingdomScene"), { ssr: false });
@@ -31,6 +32,7 @@ export default function TopicPage() {
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id ?? "cornea";
   const topic = useMemo(() => getTopic(id), [id]);
+  const examCount = useMemo(() => getTopicMcqPool(id).length, [id]);
   const [xp, setXp] = useState(0);
 
   const loadXp = useCallback(async (c: string) => {
@@ -67,12 +69,22 @@ export default function TopicPage() {
               <div className={`h-full rounded-full ${topic.bar} transition-all duration-700`} style={{ width: `${pct}%` }} />
             </div>
           </div>
-          <button
-            onClick={() => router.push(`/topic/${topic.id}/books`)}
-            className={`${topic.buttonBg} active:scale-95 transition-all text-white font-semibold px-6 py-3 rounded-xl text-sm shadow-lg`}
-          >
-            🏰 Build Kingdom
-          </button>
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={() => router.push(`/topic/${topic.id}/books`)}
+              className={`${topic.buttonBg} active:scale-95 transition-all text-white font-semibold px-6 py-3 rounded-xl text-sm shadow-lg`}
+            >
+              🏰 Build Kingdom
+            </button>
+            {examCount > 0 && (
+              <button
+                onClick={() => router.push(`/topic/${topic.id}/exam`)}
+                className="border border-slate-700 hover:border-slate-500 active:scale-95 transition-all text-slate-200 font-semibold px-6 py-2.5 rounded-xl text-sm"
+              >
+                📝 Take Exam ({examCount} Q)
+              </button>
+            )}
+          </div>
         </div>
 
         <p className="text-xs text-slate-700 text-center mt-4">Kingdom Code: <span className="text-slate-500 font-mono">A1</span></p>
