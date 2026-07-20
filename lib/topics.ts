@@ -175,11 +175,11 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
     parts: [
       {
         id: "part1",
-        title: "Part 1: Retinal Diagnostics & Imaging",
-        subtitle: "Anatomy · OCT · Fluorescein & ICG Angiography · Autofluorescence · Electrophysiology · Ultrasound",
-        questions: 0,
-        mcq: 0,
-        status: "coming",
+        title: "Part 1: Fluorescein & ICG Angiography",
+        subtitle: "Dye Properties · Angiographic Phases · Hyper/Hypofluorescence Patterns · CNV & CME · ICG · Adverse Effects",
+        questions: 25,
+        mcq: 30,
+        status: "available",
       },
       {
         id: "part2",

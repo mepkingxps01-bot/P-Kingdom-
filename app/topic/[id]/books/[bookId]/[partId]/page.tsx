@@ -16,7 +16,7 @@ export default function PartPage() {
   const topic = getTopic(id);
   const book = getBookDetail(bookId);
   const part = getPart(bookId, partId);
-  const recallQuestions = getRecall(id, partId);
+  const recallQuestions = getRecall(id, bookId, partId);
 
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
 

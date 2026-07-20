@@ -27,7 +27,7 @@ export default function MCQPage() {
   const book = getBookDetail(bookId);
   const xpColumn = topic.xpColumn;
 
-  const pool = useMemo<MCQ[]>(() => getMcqPool(id, partId), [id, partId]);
+  const pool = useMemo<MCQ[]>(() => getMcqPool(id, bookId, partId), [id, bookId, partId]);
   // Shuffle only on the client after mount — a random order during SSR would
   // not match the client render (React hydration error #418).
   const [questions, setQuestions] = useState<MCQ[]>([]);
