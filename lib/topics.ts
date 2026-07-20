@@ -167,6 +167,62 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "bcsc-retina": {
+    id: "bcsc-retina",
+    title: "BCSC Section 12: Retina and Vitreous",
+    author: "American Academy of Ophthalmology",
+    edition: "2023–2024",
+    parts: [
+      {
+        id: "part1",
+        title: "Part 1: Retinal Diagnostics & Imaging",
+        subtitle: "Anatomy · OCT · Fluorescein & ICG Angiography · Autofluorescence · Electrophysiology · Ultrasound",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part2",
+        title: "Part 2: Acquired Macular Disorders",
+        subtitle: "Age-Related Macular Degeneration · CSC · Macular Hole · Epiretinal Membrane · VMT",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Part 3: Retinal Vascular Disease",
+        subtitle: "Diabetic Retinopathy · Vein & Artery Occlusions · Retinopathy of Prematurity · Sickle Cell",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Part 4: Hereditary Retinal & Choroidal Dystrophies",
+        subtitle: "Retinitis Pigmentosa · Stargardt · Cone Dystrophies · Choroideremia · Best Disease",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part5",
+        title: "Part 5: Intraocular Inflammation & Infection",
+        subtitle: "Posterior Uveitis · White Dot Syndromes · Endophthalmitis · Viral Retinitis",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part6",
+        title: "Part 6: Retinal Detachment & Vitreoretinal Surgery",
+        subtitle: "Rhegmatogenous · Tractional · PVR · Vitrectomy · Scleral Buckling · Tamponade",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
 };
 
 export function getBookDetail(bookId: string): BookDetail {

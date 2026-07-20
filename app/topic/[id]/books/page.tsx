@@ -40,6 +40,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Core Textbook",
     },
+    {
+      id: "bcsc-retina",
+      title: "BCSC Section 12: Retina and Vitreous",
+      author: "American Academy of Ophthalmology",
+      edition: "2023–2024",
+      cover: "/books/bcsc-retina.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Board Review",
+    },
   ],
 };
 

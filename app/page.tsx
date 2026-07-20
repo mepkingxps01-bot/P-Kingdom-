@@ -20,7 +20,7 @@ const topics = [
     id: "retina",
     name: "Retina",
     description: "Anatomy, disease & surgery of the retina",
-    books: 1,
+    books: 2,
     xp: 0,
     level: 1,
     gradient: "from-amber-950 to-slate-900",
