@@ -113,7 +113,7 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
         id: "part4",
         title: "Part 4: Dry Eye & Ocular Allergy Medications",
         subtitle: "Artificial Tears · Secretagogues · Anti-Inflammatories · Antihistamines · Mast Cell Stabilizers · Steroids · Immunomodulators",
-        questions: 30,
+        questions: 56,
         mcq: 60,
         status: "available",
       },
