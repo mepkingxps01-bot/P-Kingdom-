@@ -249,6 +249,54 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "bcsc-fundamentals": {
+    id: "bcsc-fundamentals",
+    title: "BCSC Section 2: Fundamentals & Principles of Ophthalmology",
+    author: "American Academy of Ophthalmology",
+    edition: "2023–2024",
+    parts: [
+      {
+        id: "part1",
+        title: "Part 1: Pharmacokinetics & Ocular Drug Delivery",
+        subtitle: "Delivery Routes · Topical Absorption · Formulations · Barriers · Drug Design · Pharmacogenetics",
+        questions: 42,
+        mcq: 50,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Part 2: Pharmacodynamics & Drug Actions",
+        subtitle: "Receptors · Agonists & Antagonists · Autonomic Agents · Dose-Response",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Part 3: Optics of the Human Eye",
+        subtitle: "Refraction · Schematic Eye · Aberrations · Vergence",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Part 4: Ocular Anatomy & Embryology",
+        subtitle: "Globe · Orbit · Adnexa · Development",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part5",
+        title: "Part 5: Biochemistry, Metabolism & Genetics",
+        subtitle: "Ocular Biochemistry · Free Radicals · Inheritance · Molecular Genetics",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
 };
 
 export function getBookDetail(bookId: string): BookDetail {

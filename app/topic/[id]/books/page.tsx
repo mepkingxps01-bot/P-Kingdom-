@@ -51,6 +51,18 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Board Review",
     },
   ],
+  "basic-science": [
+    {
+      id: "bcsc-fundamentals",
+      title: "BCSC Section 2: Fundamentals & Principles of Ophthalmology",
+      author: "American Academy of Ophthalmology",
+      edition: "2023–2024",
+      cover: "/books/bcsc-fundamentals.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Core Textbook",
+    },
+  ],
 };
 
 export default function BooksPage() {

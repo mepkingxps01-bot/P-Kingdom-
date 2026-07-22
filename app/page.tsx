@@ -35,7 +35,7 @@ const topics = [
     id: "basic-science",
     name: "Basic Science",
     description: "Anatomy, physiology, optics & pharmacology",
-    books: 0,
+    books: 1,
     xp: 0,
     level: 1,
     gradient: "from-violet-950 to-slate-900",
