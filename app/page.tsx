@@ -31,6 +31,21 @@ const topics = [
     icon: "🔶",
     xpTarget: 150,
   },
+  {
+    id: "basic-science",
+    name: "Basic Science",
+    description: "Anatomy, physiology, optics & pharmacology",
+    books: 0,
+    xp: 0,
+    level: 1,
+    gradient: "from-violet-950 to-slate-900",
+    accent: "text-violet-300",
+    border: "border-violet-800/40",
+    badge: "bg-violet-900/50 text-violet-300",
+    bar: "bg-violet-500/60",
+    icon: "🔬",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {

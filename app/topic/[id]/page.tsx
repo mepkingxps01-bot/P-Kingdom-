@@ -12,6 +12,7 @@ import { getTopicMcqPool } from "@/lib/content";
 
 const CorneaScene = dynamic(() => import("./KingdomScene"), { ssr: false });
 const RetinaScene = dynamic(() => import("./RetinaScene"), { ssr: false });
+const AcademyScene = dynamic(() => import("./AcademyScene"), { ssr: false });
 
 const LEVELS = [
   { level: 1, min: 0, max: 150 },
@@ -59,7 +60,7 @@ export default function TopicPage() {
 
       <section className="max-w-3xl mx-auto px-6 py-8">
         <div className={`rounded-2xl overflow-hidden border ${topic.sceneBorder} mb-6`}>
-          {topic.scene === "retina" ? <RetinaScene /> : <CorneaScene />}
+          {topic.scene === "retina" ? <RetinaScene /> : topic.scene === "academy" ? <AcademyScene /> : <CorneaScene />}
         </div>
 
         <div className="flex items-center justify-between mb-6">

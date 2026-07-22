@@ -2,7 +2,7 @@ export type TopicConfig = {
   id: string;
   name: string;
   xpColumn: string;
-  scene: "cornea" | "retina";
+  scene: "cornea" | "retina" | "academy";
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
@@ -54,6 +54,24 @@ export const TOPICS: Record<string, TopicConfig> = {
     bar: "bg-amber-500/60",
     buttonBg: "bg-amber-600 hover:bg-amber-500 shadow-amber-950/50",
     sceneBorder: "border-amber-900/30",
+  },
+  "basic-science": {
+    id: "basic-science",
+    name: "Basic Science",
+    xpColumn: "basic_science_xp",
+    scene: "academy",
+    accentText: "text-violet-300",
+    accentHover: "group-hover:text-violet-300",
+    accentBright: "text-violet-400",
+    answerText: "text-violet-200",
+    optionHover: "hover:border-violet-700 hover:bg-violet-950/20",
+    optionSelected: "border-violet-500 bg-violet-950/30 text-violet-200",
+    mcqGradient: "from-violet-600 to-purple-700 hover:from-violet-500 hover:to-purple-600 shadow-violet-950/60",
+    resultBorder: "border-violet-800/40",
+    badge: "bg-violet-900/50 text-violet-300",
+    bar: "bg-violet-500/60",
+    buttonBg: "bg-violet-600 hover:bg-violet-500 shadow-violet-950/50",
+    sceneBorder: "border-violet-900/30",
   },
 };
 
