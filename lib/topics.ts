@@ -297,6 +297,54 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "bcsc-glaucoma": {
+    id: "bcsc-glaucoma",
+    title: "BCSC Section 10: Glaucoma",
+    author: "American Academy of Ophthalmology",
+    edition: "2023–2024",
+    parts: [
+      {
+        id: "part1",
+        title: "Part 1: Medical Management of Glaucoma",
+        subtitle: "Target IOP · Prostaglandins · β-Blockers · α2-Agonists · CAIs · Miotics · Rho Kinase Inhibitors · Hyperosmotics",
+        questions: 45,
+        mcq: 55,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Part 2: Clinical Evaluation of Glaucoma",
+        subtitle: "Tonometry · Gonioscopy · Optic Nerve & RNFL · Visual Fields",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Part 3: Open-Angle Glaucoma",
+        subtitle: "POAG · Normal-Tension · Secondary Open-Angle · Ocular Hypertension",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Part 4: Angle-Closure Glaucoma",
+        subtitle: "Primary Angle Closure · Plateau Iris · Secondary Angle Closure",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part5",
+        title: "Part 5: Surgical Management of Glaucoma",
+        subtitle: "Laser Trabeculoplasty · Trabeculectomy · Tube Shunts · MIGS",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
 };
 
 export function getBookDetail(bookId: string): BookDetail {
