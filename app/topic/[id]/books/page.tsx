@@ -62,16 +62,6 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Core Textbook",
     },
-    {
-      id: "bcsc-glaucoma",
-      title: "BCSC Section 10: Glaucoma",
-      author: "American Academy of Ophthalmology",
-      edition: "2023–2024",
-      cover: "/books/bcsc-glaucoma.jpg",
-      chapters: 0,
-      questions: 0,
-      tag: "Core Textbook",
-    },
   ],
 };
 

@@ -716,7 +716,7 @@ export const RECALL: Record<string, RecallQ[]> = {
   "retina/ryans-retina/part1": RETINA_VIRAL_RECALL,
   "retina/bcsc-retina/part1": BCSC_FFA_RECALL,
   "basic-science/bcsc-fundamentals/part1": BASIC_PK_RECALL,
-  "basic-science/bcsc-glaucoma/part1": BASIC_GLAUCOMA_RECALL,
+  "basic-science/bcsc-fundamentals/part2": BASIC_GLAUCOMA_RECALL,
 };
 
 export const MCQS: Record<string, MCQ[]> = {
@@ -725,7 +725,7 @@ export const MCQS: Record<string, MCQ[]> = {
   "retina/ryans-retina/part1": RETINA_VIRAL_MCQ,
   "retina/bcsc-retina/part1": BCSC_FFA_MCQ,
   "basic-science/bcsc-fundamentals/part1": BASIC_PK_MCQ,
-  "basic-science/bcsc-glaucoma/part1": BASIC_GLAUCOMA_MCQ,
+  "basic-science/bcsc-fundamentals/part2": BASIC_GLAUCOMA_MCQ,
 };
 
 export function getRecall(topicId: string, bookId: string, partId: string): RecallQ[] {
