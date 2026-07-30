@@ -273,10 +273,10 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
       {
         id: "part3",
-        title: "Part 3: Ocular & Corneal Anatomy",
-        subtitle: "Globe & Compartments · Tear Film · Cornea (5 Layers) · Corneal Nerves · Limbus · Sclera",
-        questions: 40,
-        mcq: 50,
+        title: "Part 3: Cornea Essentials — Anatomy & Physiology",
+        subtitle: "Globe · Tear Film · Cornea (5 Layers) · Corneal Metabolism · Endothelial Pump · Nerves · Limbus · Sclera",
+        questions: 78,
+        mcq: 92,
         status: "available",
       },
       {
