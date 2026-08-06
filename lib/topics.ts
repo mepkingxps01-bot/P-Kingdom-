@@ -2,7 +2,7 @@ export type TopicConfig = {
   id: string;
   name: string;
   xpColumn: string;
-  scene: "cornea" | "retina" | "academy";
+  scene: "cornea" | "retina" | "academy" | "uveitis";
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
@@ -54,6 +54,24 @@ export const TOPICS: Record<string, TopicConfig> = {
     bar: "bg-amber-500/60",
     buttonBg: "bg-amber-600 hover:bg-amber-500 shadow-amber-950/50",
     sceneBorder: "border-amber-900/30",
+  },
+  uveitis: {
+    id: "uveitis",
+    name: "Uveitis",
+    xpColumn: "uveitis_xp",
+    scene: "uveitis",
+    accentText: "text-rose-300",
+    accentHover: "group-hover:text-rose-300",
+    accentBright: "text-rose-400",
+    answerText: "text-rose-200",
+    optionHover: "hover:border-rose-700 hover:bg-rose-950/20",
+    optionSelected: "border-rose-500 bg-rose-950/30 text-rose-200",
+    mcqGradient: "from-rose-600 to-red-700 hover:from-rose-500 hover:to-red-600 shadow-rose-950/60",
+    resultBorder: "border-rose-800/40",
+    badge: "bg-rose-900/50 text-rose-300",
+    bar: "bg-rose-500/60",
+    buttonBg: "bg-rose-600 hover:bg-rose-500 shadow-rose-950/50",
+    sceneBorder: "border-rose-900/30",
   },
   "basic-science": {
     id: "basic-science",
@@ -227,6 +245,78 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
         id: "part11",
         title: "Chapter 11: Retinal Detachment & Vitreoretinal Surgery",
         subtitle: "Rhegmatogenous · Tractional · PVR · Vitrectomy · Scleral Buckling · Tamponade",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
+  "bcsc-uveitis": {
+    id: "bcsc-uveitis",
+    title: "BCSC Section 9: Uveitis and Ocular Inflammation",
+    author: "American Academy of Ophthalmology",
+    edition: "2023–2024",
+    parts: [
+      {
+        id: "part1",
+        title: "Chapter 1: Ocular Toxoplasmosis",
+        subtitle: "T. gondii Life Cycle · Congenital vs Acquired · Headlight in the Fog · PORT · Serology · Triple Therapy · TMP-SMX",
+        questions: 34,
+        mcq: 50,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Chapter 2: Toxocariasis & Helminthic Uveitis",
+        subtitle: "Toxocara canis/cati · Visceral vs Ocular Larva Migrans · Granuloma · DUSN",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Chapter 3: Viral Uveitis",
+        subtitle: "HSV · VZV · CMV · Acute Retinal Necrosis · Fuchs Uveitis Syndrome",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Chapter 4: Anterior Uveitis & HLA-B27 Disease",
+        subtitle: "Spondyloarthropathies · JIA · Tubulointerstitial Nephritis · Lens-Induced",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part5",
+        title: "Chapter 5: Sarcoidosis",
+        subtitle: "Granulomatous Uveitis · Candle-Wax Drippings · ACE · Chest Imaging · Biopsy",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part6",
+        title: "Chapter 6: VKH & Sympathetic Ophthalmia",
+        subtitle: "Vogt–Koyanagi–Harada · Serous Detachments · Sunset-Glow Fundus · Sympathetic Ophthalmia",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part7",
+        title: "Chapter 7: Behçet & White Dot Syndromes",
+        subtitle: "Behçet Disease · Birdshot · MEWDS · APMPPE · Serpiginous · MFC",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part8",
+        title: "Chapter 8: Scleritis & Episcleritis",
+        subtitle: "Anterior & Posterior Scleritis · Necrotizing Disease · Systemic Vasculitis Associations",
         questions: 0,
         mcq: 0,
         status: "coming",
