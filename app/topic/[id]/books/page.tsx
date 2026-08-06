@@ -53,6 +53,18 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Core Textbook",
     },
   ],
+  uveitis: [
+    {
+      id: "bcsc-uveitis",
+      title: "BCSC Section 9: Uveitis and Ocular Inflammation",
+      author: "American Academy of Ophthalmology",
+      edition: "2023–2024",
+      cover: "/books/bcsc-uveitis.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Board Review",
+    },
+  ],
 };
 
 export default function BooksPage() {

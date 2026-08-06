@@ -46,6 +46,21 @@ const topics = [
     icon: "🔬",
     xpTarget: 150,
   },
+  {
+    id: "uveitis",
+    name: "Uveitis",
+    description: "Ocular inflammation & infectious uveitis",
+    books: 1,
+    xp: 0,
+    level: 1,
+    gradient: "from-rose-950 to-slate-900",
+    accent: "text-rose-300",
+    border: "border-rose-800/40",
+    badge: "bg-rose-900/50 text-rose-300",
+    bar: "bg-rose-500/60",
+    icon: "👁️",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {
