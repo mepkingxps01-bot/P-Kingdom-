@@ -355,10 +355,10 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
       {
         id: "part4",
-        title: "Part 4: Aqueous Humor, Iris & Ciliary Body",
-        subtitle: "Blood–Aqueous Barrier · NPE Secretion · Na/K-ATPase & Carbonic Anhydrase · Goldmann Equation · Composition · Ascorbate · Growth Factors",
-        questions: 40,
-        mcq: 56,
+        title: "Part 4: Aqueous Humor & Anterior Segment Anatomy",
+        subtitle: "Blood–Aqueous Barrier · NPE Secretion · Goldmann Equation · Composition · AC Angle · Trabecular Meshwork · Schlemm Canal · Iris · Ciliary Body · Choroid",
+        questions: 76,
+        mcq: 102,
         status: "available",
       },
       {
