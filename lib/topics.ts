@@ -348,9 +348,9 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part3",
         title: "Part 3: Cornea Essentials — Anatomy & Physiology",
-        subtitle: "Globe · Tear Film · Cornea (5 Layers) · Corneal Metabolism · Endothelial Pump · Nerves · Limbus · Sclera",
-        questions: 78,
-        mcq: 92,
+        subtitle: "Globe · Tear Film · Cornea (5 Layers) · Optics & Dimensions · Metabolism & Pathways · Hydration & Transparency · Drug Permeability · Slit-Lamp, Dyes, Pachymetry, Specular Microscopy & Imaging",
+        questions: 112,
+        mcq: 136,
         status: "available",
       },
       {
@@ -380,9 +380,9 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part7",
         title: "Part 7: Vitreous & Retina Fundamentals",
-        subtitle: "Vitreous Anatomy/Embryology/Biochemistry · Collagen & Hyaluronan · PVD & Vitreolysis · Retinal Layers · RPE · Macula & Fovea · Blood Supply · Surgical Topography",
-        questions: 40,
-        mcq: 56,
+        subtitle: "Vitreous Anatomy/Embryology/Biochemistry · Collagen, Hyaluronan, Lipids & Fibrillin · Liquefaction, PVD & Vitreolysis · Retinal Layers · RPE · Macula & Fovea · Blood Supply · Surgical Topography",
+        questions: 50,
+        mcq: 70,
         status: "available",
       },
       {
