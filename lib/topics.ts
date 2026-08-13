@@ -332,9 +332,9 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part1",
         title: "Part 1: Pharmacokinetics & Ocular Drug Delivery",
-        subtitle: "Delivery Routes · Topical Absorption · Formulations · Barriers · Drug Design · Pharmacogenetics",
-        questions: 42,
-        mcq: 50,
+        subtitle: "PK vs PD · Bioavailability · Tear-Film Kinetics · Eyedrops & Ointments · Injection Routes · Implants (Ozurdex/PDS) · Diagnostic Dyes · Anti-VEGF · Pharmacogenetics",
+        questions: 72,
+        mcq: 88,
         status: "available",
       },
       {
