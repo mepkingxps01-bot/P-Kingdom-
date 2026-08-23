@@ -340,9 +340,9 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part2",
         title: "Part 2: Glaucoma Pharmacology — Complete Drug Guide",
-        subtitle: "Target IOP & Trials · Prostaglandins · β-Blockers · α-Agonists · CAIs · Miotics · ROCK & EP2 · Fixed Combos · Systemic & Hyperosmotic · Pregnancy · First-Line & Adherence",
-        questions: 52,
-        mcq: 76,
+        subtitle: "Target IOP (Lower/Higher Factors) & Trials · Prostaglandins · β-Blockers · α-Agonists · CAIs · Miotics · ROCK & EP2 · Fixed Combos · Systemic & Hyperosmotic · Pregnancy · First-Line & Adherence",
+        questions: 54,
+        mcq: 81,
         status: "available",
       },
       {
