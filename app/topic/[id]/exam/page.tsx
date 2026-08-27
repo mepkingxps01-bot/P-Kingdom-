@@ -1,23 +1,28 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { getTopic } from "@/lib/topics";
 import { getTopicMcqPool, type MCQ } from "@/lib/content";
 import MCQQuiz from "../MCQQuiz";
 
-export default function ExamPage() {
+function ExamInner() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id ?? "cornea";
   const topic = getTopic(id);
   const pool = useMemo<MCQ[]>(() => getTopicMcqPool(id), [id]);
-  const [count, setCount] = useState<number | null>(null);
+
+  // A ?n= preset (e.g., the Quick Exam button) launches straight into the quiz.
+  const presetRaw = Number(searchParams.get("n"));
+  const preset = Number.isFinite(presetRaw) && presetRaw > 0 ? presetRaw : null;
+  const [count, setCount] = useState<number | null>(preset);
 
   const homeHref = `/topic/${topic.id}`;
 
   // Offer standard lengths that fit the pool, plus "All".
-  const lengths = [10, 25, 50, 100].filter((n) => n < pool.length);
+  const lengths = [10, 25, 50, 100, 150].filter((n) => n < pool.length);
   const options = [...lengths, pool.length];
 
   if (pool.length === 0) {
@@ -68,7 +73,7 @@ export default function ExamPage() {
           </div>
 
           <p className="text-xs text-slate-600 mt-6 text-center">
-            +3 XP per correct · +20 XP bonus for a perfect score
+            +3 XP per correct · +1 XP for an attempt · saved automatically
           </p>
         </section>
       </main>
@@ -85,5 +90,21 @@ export default function ExamPage() {
       homeHref={homeHref}
       title={`${topic.name} Exam`}
     />
+  );
+}
+
+export default function ExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-slate-950 text-white">
+          <section className="max-w-2xl mx-auto px-6 py-20 text-center">
+            <p className="text-sm text-slate-500">Loading exam…</p>
+          </section>
+        </main>
+      }
+    >
+      <ExamInner />
+    </Suspense>
   );
 }

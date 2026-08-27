@@ -78,6 +78,14 @@ export default function TopicPage() {
             >
               🏰 Build Kingdom
             </button>
+            {examCount > 150 && (
+              <button
+                onClick={() => router.push(`/topic/${topic.id}/exam?n=150`)}
+                className={`${topic.buttonBg} active:scale-95 transition-all text-white font-semibold px-6 py-2.5 rounded-xl text-sm shadow-lg`}
+              >
+                ⚡ Quick Exam (150 Q)
+              </button>
+            )}
             {examCount > 0 && (
               <button
                 onClick={() => router.push(`/topic/${topic.id}/exam`)}
