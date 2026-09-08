@@ -358,10 +358,10 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part2",
         title: "Chapter 2: Congenital Nystagmus",
-        subtitle: "Infantile Nystagmus Syndrome · Fusion Maldevelopment (Latent) · Spasmus Nutans · Gaze-Paretic",
-        questions: 0,
-        mcq: 0,
-        status: "coming",
+        subtitle: "Infantile Nystagmus Syndrome (Foveation · Null Point · OKN Reversal) · Fusion Maldevelopment (Latent) · Heimann-Bielschowsky · Spasmus Nutans",
+        questions: 34,
+        mcq: 44,
+        status: "available",
       },
       {
         id: "part3",
