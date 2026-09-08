@@ -2,7 +2,7 @@ export type TopicConfig = {
   id: string;
   name: string;
   xpColumn: string;
-  scene: "cornea" | "retina" | "academy" | "uveitis";
+  scene: "cornea" | "retina" | "academy" | "uveitis" | "neuro";
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
@@ -72,6 +72,24 @@ export const TOPICS: Record<string, TopicConfig> = {
     bar: "bg-rose-500/60",
     buttonBg: "bg-rose-600 hover:bg-rose-500 shadow-rose-950/50",
     sceneBorder: "border-rose-900/30",
+  },
+  "neuro-oph": {
+    id: "neuro-oph",
+    name: "Neuro-Ophthalmology",
+    xpColumn: "neuro_oph_xp",
+    scene: "neuro",
+    accentText: "text-emerald-300",
+    accentHover: "group-hover:text-emerald-300",
+    accentBright: "text-emerald-400",
+    answerText: "text-emerald-200",
+    optionHover: "hover:border-emerald-700 hover:bg-emerald-950/20",
+    optionSelected: "border-emerald-500 bg-emerald-950/30 text-emerald-200",
+    mcqGradient: "from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-emerald-950/60",
+    resultBorder: "border-emerald-800/40",
+    badge: "bg-emerald-900/50 text-emerald-300",
+    bar: "bg-emerald-500/60",
+    buttonBg: "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/50",
+    sceneBorder: "border-emerald-900/30",
   },
   "basic-science": {
     id: "basic-science",
@@ -317,6 +335,46 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
         id: "part8",
         title: "Chapter 8: Scleritis & Episcleritis",
         subtitle: "Anterior & Posterior Scleritis · Necrotizing Disease · Systemic Vasculitis Associations",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
+  "bcsc-neuro": {
+    id: "bcsc-neuro",
+    title: "BCSC Section 5: Neuro-Ophthalmology",
+    author: "American Academy of Ophthalmology",
+    edition: "2026–2027",
+    parts: [
+      {
+        id: "part1",
+        title: "Chapter 1: Nystagmus — Terminology, Assessment & Physiologic",
+        subtitle: "Jerk vs Pendular · Oscillopsia · Waveforms · CEMAS · Conjugacy · Null Point · Frenzel Goggles · Caloric (COWS) · Optokinetic · Congenital/Acquired Overview",
+        questions: 33,
+        mcq: 40,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Chapter 2: Congenital Nystagmus",
+        subtitle: "Infantile Nystagmus Syndrome · Fusion Maldevelopment (Latent) · Spasmus Nutans · Gaze-Paretic",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Chapter 3: Acquired Nystagmus",
+        subtitle: "Downbeat · Upbeat · See-Saw · Periodic Alternating · Vestibular · Localization & Management",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Chapter 4: Saccadic Intrusions & Oscillations",
+        subtitle: "Square-Wave Jerks · Ocular Flutter · Opsoclonus · Superior Oblique Myokymia",
         questions: 0,
         mcq: 0,
         status: "coming",

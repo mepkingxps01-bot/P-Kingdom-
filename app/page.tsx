@@ -61,6 +61,21 @@ const topics = [
     icon: "👁️",
     xpTarget: 150,
   },
+  {
+    id: "neuro-oph",
+    name: "Neuro-Ophthalmology",
+    description: "Nystagmus, pupils, optic nerve & pathways",
+    books: 1,
+    xp: 0,
+    level: 1,
+    gradient: "from-emerald-950 to-slate-900",
+    accent: "text-emerald-300",
+    border: "border-emerald-800/40",
+    badge: "bg-emerald-900/50 text-emerald-300",
+    bar: "bg-emerald-500/60",
+    icon: "🧠",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {

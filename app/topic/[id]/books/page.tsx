@@ -65,6 +65,18 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Board Review",
     },
   ],
+  "neuro-oph": [
+    {
+      id: "bcsc-neuro",
+      title: "BCSC Section 5: Neuro-Ophthalmology",
+      author: "American Academy of Ophthalmology",
+      edition: "2026–2027",
+      cover: "/books/bcsc-neuro.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Board Review",
+    },
+  ],
 };
 
 export default function BooksPage() {
