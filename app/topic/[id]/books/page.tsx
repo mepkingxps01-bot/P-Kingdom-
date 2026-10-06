@@ -76,6 +76,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Board Review",
     },
+    {
+      id: "bcsc-neuro-pupil",
+      title: "Neuro-Ophthalmology: Pupillary Disorders",
+      author: "L. Hansapinyo · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-pupil.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
 };
 
