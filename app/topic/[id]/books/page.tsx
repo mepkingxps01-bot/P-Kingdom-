@@ -86,6 +86,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Lecture Deck",
     },
+    {
+      id: "bcsc-neuro-optic",
+      title: "Neuro-Ophthalmology: Optic Nerve Diseases",
+      author: "P. Kulniwatcharoen · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-optic.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
 };
 
