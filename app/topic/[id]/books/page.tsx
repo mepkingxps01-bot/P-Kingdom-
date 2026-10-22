@@ -106,6 +106,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Lecture Deck",
     },
+    {
+      id: "bcsc-neuro-eom",
+      title: "Neuro-Ophthalmology: EOM Abnormalities & Diplopia",
+      author: "L. Hansapinyo · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-eom.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
 };
 
