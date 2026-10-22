@@ -116,6 +116,26 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Lecture Deck",
     },
+    {
+      id: "bcsc-neuro-lid",
+      title: "Neuro-Ophthalmology: Eyelid & Facial Abnormalities",
+      author: "P. Kulniwatcharoen · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-lid.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
+    {
+      id: "bcsc-neuro-meds",
+      title: "Neuro-Ophthalmology: Common Drugs & Pharmacology",
+      author: "P. Kulniwatcharoen · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-meds.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
 };
 
