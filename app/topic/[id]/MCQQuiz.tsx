@@ -28,7 +28,7 @@ type Props = {
 
 export default function MCQQuiz({ pool, count, topic, backHref, backLabel, homeHref, title = "Build Kingdom — Board Exam MCQ" }: Props) {
   const xpColumn = topic.xpColumn;
-  const { user } = useAuth();
+  const { uid } = useAuth();
 
   // Shuffle only on the client after mount so SSR and client match (React #418).
   // `round` bumps to reshuffle in place for "New Questions".
@@ -49,10 +49,9 @@ export default function MCQQuiz({ pool, count, topic, backHref, backLabel, homeH
   const baselineRef = useRef<number | null>(null);
   const [baselineLoaded, setBaselineLoaded] = useState(false);
   useEffect(() => {
-    if (!user) return;
+    if (!uid) return;
     let cancelled = false;
     (async () => {
-      const uid = user.id;
       const { data } = await supabase.from("pkingdom_xp").select(xpColumn).eq("uid", uid).single();
       if (cancelled) return;
       baselineRef.current = (data as unknown as Record<string, number> | null)?.[xpColumn] ?? 0;
@@ -61,23 +60,22 @@ export default function MCQQuiz({ pool, count, topic, backHref, backLabel, homeH
     return () => {
       cancelled = true;
     };
-  }, [xpColumn, user]);
+  }, [xpColumn, uid]);
 
   // Debounced auto-save: persist baseline + earned so progress is never lost even
   // on a huge set the user never "finishes". Batches rapid answering into few writes.
   // Re-runs when the baseline finishes loading so an early answer still saves.
   useEffect(() => {
-    if (xp === 0 || !baselineLoaded || !user) return;
+    if (xp === 0 || !baselineLoaded || !uid) return;
     const t = setTimeout(async () => {
       if (baselineRef.current === null) return;
-      const uid = user.id;
       const { error } = await supabase
         .from("pkingdom_xp")
         .upsert({ uid, [xpColumn]: baselineRef.current + xp, updated_at: new Date().toISOString() });
       setSaveError(error ? `Save error: ${error.message}` : "");
     }, 1200);
     return () => clearTimeout(t);
-  }, [xp, xpColumn, baselineLoaded, user]);
+  }, [xp, xpColumn, baselineLoaded, uid]);
 
   const handleSelect = (qId: number, optIdx: number, correctIdx: number) => {
     if (answers[qId] !== undefined) return; // already answered — locked

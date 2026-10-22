@@ -2,25 +2,38 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+
+// Fallback id used in "open" mode (Supabase not configured): behaves like the
+// pre-accounts shared code so XP still persists and nothing breaks.
+const OPEN_MODE_UID = "A1";
 
 type AuthState = {
   user: User | null;
   loading: boolean;
+  configured: boolean;
+  // The id to key XP on: the signed-in user's id when accounts are active,
+  // otherwise the shared open-mode code.
+  uid: string | null;
   signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthState>({
   user: null,
   loading: true,
+  configured: isSupabaseConfigured,
+  uid: isSupabaseConfigured ? null : OPEN_MODE_UID,
   signOut: async () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isSupabaseConfigured);
 
   useEffect(() => {
+    // Open mode: no auth system to query; render the app for everyone.
+    if (!isSupabaseConfigured) return;
+
     let mounted = true;
 
     supabase.auth.getSession().then(({ data }: { data: { session: Session | null } }) => {
@@ -44,8 +57,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
   };
 
+  const uid = isSupabaseConfigured ? (user?.id ?? null) : OPEN_MODE_UID;
+
   return (
-    <AuthContext.Provider value={{ user, loading, signOut }}>
+    <AuthContext.Provider value={{ user, loading, configured: isSupabaseConfigured, uid, signOut }}>
       {children}
     </AuthContext.Provider>
   );

@@ -36,7 +36,7 @@ export default function TopicPage() {
   const id = Array.isArray(params.id) ? params.id[0] : params.id ?? "cornea";
   const topic = useMemo(() => getTopic(id), [id]);
   const examCount = useMemo(() => getTopicMcqPool(id).length, [id]);
-  const { user } = useAuth();
+  const { uid } = useAuth();
   const [xp, setXp] = useState(0);
 
   const loadXp = useCallback(async (c: string) => {
@@ -46,8 +46,8 @@ export default function TopicPage() {
   }, [topic.xpColumn]);
 
   useEffect(() => {
-    if (user) loadXp(user.id);
-  }, [pathname, loadXp, user]);
+    if (uid) loadXp(uid);
+  }, [pathname, loadXp, uid]);
 
   const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));

@@ -4,7 +4,10 @@ import { useAuth } from "./AuthProvider";
 import { LoginForm } from "./LoginForm";
 
 export function AuthGate({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
+  const { user, loading, configured } = useAuth();
+
+  // Open mode (no Supabase keys configured): run the app without a login gate.
+  if (!configured) return <>{children}</>;
 
   if (loading) {
     return (
