@@ -96,6 +96,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Lecture Deck",
     },
+    {
+      id: "bcsc-neuro-emerg",
+      title: "Neuro-Ophthalmology: Neuro-Ophthalmic Emergencies",
+      author: "L. Hansapinyo · AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-emerg.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
 };
 
