@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AccountBadge } from "./AccountBadge";
 
 const topics = [
   {
@@ -86,10 +87,7 @@ export default function Home() {
           <h1 className="text-xl font-semibold tracking-tight">P-Kingdom</h1>
           <p className="text-sm text-slate-400 mt-0.5">Study. Recall. Build your kingdom.</p>
         </div>
-        <div className="flex items-center gap-2 bg-slate-800 rounded-full px-4 py-1.5">
-          <span className="text-yellow-400 text-sm">⚔</span>
-          <span className="text-sm font-medium">0 XP</span>
-        </div>
+        <AccountBadge />
       </header>
 
       <section className="px-6 py-10 max-w-6xl mx-auto">

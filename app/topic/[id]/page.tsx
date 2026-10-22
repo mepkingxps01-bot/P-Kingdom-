@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname, useParams } from "next/navigation";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { supabase } from "@/lib/supabase";
-import { getCode } from "@/lib/uid";
+import { useAuth } from "@/app/AuthProvider";
 import { getTopic } from "@/lib/topics";
 import { getTopicMcqPool } from "@/lib/content";
 // Kingdom code is fixed — all devices share the same XP automatically
@@ -36,6 +36,7 @@ export default function TopicPage() {
   const id = Array.isArray(params.id) ? params.id[0] : params.id ?? "cornea";
   const topic = useMemo(() => getTopic(id), [id]);
   const examCount = useMemo(() => getTopicMcqPool(id).length, [id]);
+  const { uid } = useAuth();
   const [xp, setXp] = useState(0);
 
   const loadXp = useCallback(async (c: string) => {
@@ -45,8 +46,8 @@ export default function TopicPage() {
   }, [topic.xpColumn]);
 
   useEffect(() => {
-    loadXp(getCode());
-  }, [pathname, loadXp]);
+    if (uid) loadXp(uid);
+  }, [pathname, loadXp, uid]);
 
   const { level, progress, needed } = getLevelInfo(xp);
   const pct = Math.min(100, Math.round((progress / needed) * 100));
@@ -98,7 +99,6 @@ export default function TopicPage() {
           </div>
         </div>
 
-        <p className="text-xs text-slate-700 text-center mt-4">Kingdom Code: <span className="text-slate-500 font-mono">A1</span></p>
 
       </section>
     </main>
