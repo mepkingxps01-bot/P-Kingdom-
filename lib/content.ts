@@ -3530,3 +3530,23 @@ export function getTopicMcqPool(topicId: string): MCQ[] {
     .flatMap(([, questions]) => questions)
     .map((q, i) => ({ ...q, id: i + 1 }));
 }
+
+// All recall cards across every part of a single book, combined into one deck
+// (chapters are merged so a book reads as a single recall session). IDs are
+// renumbered so cards from different parts stay unique for React keys.
+export function getBookRecall(topicId: string, bookId: string): RecallQ[] {
+  const prefix = `${topicId}/${bookId}/`;
+  return Object.entries(RECALL)
+    .filter(([key]) => key.startsWith(prefix))
+    .flatMap(([, questions]) => questions)
+    .map((q, i) => ({ ...q, id: i + 1 }));
+}
+
+// All MCQs across every part of a single book, combined into one exam pool.
+export function getBookMcqPool(topicId: string, bookId: string): MCQ[] {
+  const prefix = `${topicId}/${bookId}/`;
+  return Object.entries(MCQS)
+    .filter(([key]) => key.startsWith(prefix))
+    .flatMap(([, questions]) => questions)
+    .map((q, i) => ({ ...q, id: i + 1 }));
+}
