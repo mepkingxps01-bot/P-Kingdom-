@@ -285,6 +285,70 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "uveitis-noninfectious": {
+    id: "uveitis-noninfectious",
+    title: "Uveitis: Non-Infectious Uveitis & Scleritis",
+    author: "CMU Ophthalmology · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Non-Infectious Uveitis & Scleritis",
+        subtitle: "VKH (Sunset Glow) · Sympathetic Ophthalmia · Sarcoidosis (Candle-Wax) · Behçet (Hypopyon) · Tattoo-Associated · Scleritis (Necrotizing · Posterior/T-sign) · with clinical images",
+        questions: 17,
+        mcq: 18,
+        status: "available",
+      },
+    ],
+  },
+  "uveitis-viral": {
+    id: "uveitis-viral",
+    title: "Uveitis: Viral & Anterior Uveitis",
+    author: "CMU Ophthalmology · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Viral & Anterior Uveitis",
+        subtitle: "Viral AU (CMV/HSV/VZV/Rubella) · KP Patterns · Iris Atrophy · Fuchs Uveitis · Posner-Schlossman · CMV Retinitis · ARN/PORN · with clinical images",
+        questions: 17,
+        mcq: 18,
+        status: "available",
+      },
+    ],
+  },
+  "uveitis-complications": {
+    id: "uveitis-complications",
+    title: "Uveitis: Complications of Uveitis",
+    author: "A. Apivatthakakul · CMU · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Complications of Uveitis",
+        subtitle: "Band Keratopathy · Cataract (PSC) · Uveitic Glaucoma/OHT · Hypotony · Cystoid Macular Edema · Retinal Detachment · Retinal/Choroidal Neovascularization",
+        questions: 16,
+        mcq: 16,
+        status: "available",
+      },
+    ],
+  },
+  "uveitis-approach": {
+    id: "uveitis-approach",
+    title: "Uveitis: Approach & Medications",
+    author: "CMU Ophthalmology · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Approach & Uveitis Medications",
+        subtitle: "SUN Categorization · Stepwise Work-up · KP Differential · Corticosteroids (Potency/Routes/Implants/Taper) · Pulse IV · Immunosuppressives · Adalimumab · Local vs Systemic",
+        questions: 16,
+        mcq: 16,
+        status: "available",
+      },
+    ],
+  },
   "bcsc-uveitis": {
     id: "bcsc-uveitis",
     title: "BCSC Section 9: Uveitis and Ocular Inflammation",
