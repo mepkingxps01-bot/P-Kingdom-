@@ -75,6 +75,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Lecture Deck",
     },
     {
+      id: "uveitis-cases",
+      title: "Uveitis: Clinical Cases & Approach",
+      author: "CMU Ophthalmology · AAO BCSC 9",
+      edition: "2026",
+      cover: "/books/uveitis-cases.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Cases",
+    },
+    {
       id: "uveitis-complications",
       title: "Uveitis: Complications & Management",
       author: "A. Apivatthakakul · CMU · AAO BCSC 9",
