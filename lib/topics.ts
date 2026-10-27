@@ -278,9 +278,25 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       {
         id: "part1",
         title: "Anterior & Intermediate Uveitis",
-        subtitle: "Viral AU (CMV/HSV/VZV/Rubella) · KP Patterns · Iris Atrophy · Fuchs Uveitis · Posner-Schlossman · Scleritis & Episcleritis (Necrotizing · Posterior/T-sign) · with clinical images",
-        questions: 19,
-        mcq: 19,
+        subtitle: "SUN Grading · HLA-B27 Spondyloarthropathies · JIA · TINU · Lens-Induced · Drug-Induced · Pars Planitis (Snowbank) · Viral AU/KP Patterns · Fuchs · Posner-Schlossman · Scleritis · Masquerades · with clinical images",
+        questions: 35,
+        mcq: 35,
+        status: "available",
+      },
+    ],
+  },
+  "uveitis-cases": {
+    id: "uveitis-cases",
+    title: "Uveitis: Clinical Cases & Approach",
+    author: "CMU Ophthalmology · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Clinical Cases & Approach",
+        subtitle: "Worked vignettes: Categorize (SUN) → Differential → Investigations → Diagnosis → Next Step · HLA-B27 · JIA · Sarcoid · Toxo · CMV · Behçet · VKH · Pars Planitis · Syphilis · Masquerades",
+        questions: 12,
+        mcq: 16,
         status: "available",
       },
     ],
