@@ -1007,7 +1007,7 @@ const UVEITIS_TOXO_RECALL: RecallQ[] = [
   { id: 14, question: "What is the natural course of retinochoroiditis in children with congenital toxoplasmosis?", answer: "As many as 85% develop retinochoroiditis after a mean of 3.7 years, and 25% of these become blind in one or both eyes. Most experts recommend antiparasitic therapy in the first year of life regardless of ocular/systemic signs." },
   { id: 15, question: "Is postnatal ocular toxoplasmosis usually reactivation of congenital disease?", answer: "Not necessarily. Although once considered reactivation of congenital disease, ocular toxoplasmosis in children and adults is now recognized as newly acquired infection in a substantial proportion of cases — in one study, up to two-thirds of cases were acquired postnatally." },
   { id: 16, question: "What are the typical presenting symptoms and anterior segment findings of acquired ocular toxoplasmosis?", answer: "Unilateral blurred or hazy vision and floaters. A mild-to-moderate granulomatous anterior uveitis is often observed, and up to 20% of patients have acutely elevated IOP at presentation." },
-  { id: 17, question: "Describe the classic fundus appearance of ocular toxoplasmosis, including the 'headlight in the fog' sign.", answer: "A focal, white retinochoroiditis often adjacent to a pigmented retinochoroidal scar, with moderate overlying vitreous inflammation — the active white lesion seen through the hazy vitritis produces a 'headlight in the fog' appearance. Without a pre-existing scar, recently acquired disease presents as a focal retinochoroiditis." },
+  { id: 17, question: "Describe the classic fundus appearance of ocular toxoplasmosis, including the 'headlight in the fog' sign.", answer: "A focal, white retinochoroiditis often adjacent to a pigmented retinochoroidal scar, with moderate overlying vitreous inflammation — the active white lesion seen through the hazy vitritis produces a 'headlight in the fog' appearance. Without a pre-existing scar, recently acquired disease presents as a focal retinochoroiditis.", image: "/uveitis/toxo-headlight.jpg", imageAlt: "Focal white retinochoroiditis beside a pigmented scar with overlying vitritis — toxoplasmosis 'headlight in the fog'" },
   { id: 18, question: "Why can a toxoplasmic lesion near the optic nerve be misdiagnosed, and what vascular findings can accompany active lesions?", answer: "Lesions adjacent to or involving the optic nerve may be mistaken for optic neuritis. Retinal vessels near an active lesion may show perivasculitis with diffuse venous sheathing and segmental arterial plaques (previously called Kyrieleis arteriolitis); vascular occlusions may also occur." },
   { id: 19, question: "List the ocular complications of toxoplasmic retinochoroiditis.", answer: "Cataract, persistent vitreous opacities, macular edema, retinal detachment, epiretinal membranes, optic atrophy, and choroidal neovascularization (CNV)." },
   { id: 20, question: "How does ocular toxoplasmosis present in immunocompromised or older patients?", answer: "With atypical findings — large, multiple, and/or bilateral lesions, with or without associated retinochoroidal scars. This severe picture can also occur when corticosteroids are given without concomitant antiparasitic therapy, and it may simulate herpetic acute retinal necrosis (ARN)." },
@@ -3635,6 +3635,22 @@ const UVEITIS_APPROACH_MCQ: MCQ[] = [
   { id: 16, question: "The overall treatment principle in active sight-threatening uveitis is:", options: ["Start low and go slow", "Hit hard/fast/adequate, then taper as an art", "Topical only regardless of severity", "Avoid steroids"], correct: 1, explanation: "Suppress inflammation promptly and adequately, then taper slowly to prevent rebound, individualizing local vs systemic therapy." },
 ];
 
+// ── Uveitis regrouped into 3 anatomical books (parts flattened per book) ──
+// The two mixed decks are split: non-infectious → scleritis (anterior) vs
+// posterior/pan; viral → anterior vs posterior. Infectious-posterior keeps
+// only its bacterial cards (syphilis/TB/bartonella); toxoplasmosis is covered
+// by the comprehensive BCSC toxo deck (UVEITIS_TOXO).
+const UV_SCLERITIS_RECALL = UVEITIS_NONINF_RECALL.slice(9, 16);
+const UV_NONINF_POST_RECALL = [...UVEITIS_NONINF_RECALL.slice(0, 9), ...UVEITIS_NONINF_RECALL.slice(16)];
+const UV_SCLERITIS_MCQ = UVEITIS_NONINF_MCQ.slice(9, 16);
+const UV_NONINF_POST_MCQ = [...UVEITIS_NONINF_MCQ.slice(0, 9), ...UVEITIS_NONINF_MCQ.slice(16)];
+const UV_VIRAL_POST_RECALL = UVEITIS_VIRAL_RECALL.slice(8, 13);
+const UV_VIRAL_ANT_RECALL = [...UVEITIS_VIRAL_RECALL.slice(0, 8), ...UVEITIS_VIRAL_RECALL.slice(13)];
+const UV_VIRAL_POST_MCQ = [...UVEITIS_VIRAL_MCQ.slice(7, 12), UVEITIS_VIRAL_MCQ[17]];
+const UV_VIRAL_ANT_MCQ = [...UVEITIS_VIRAL_MCQ.slice(0, 7), ...UVEITIS_VIRAL_MCQ.slice(12, 17)];
+const UV_IPOST_BACT_RECALL = UVEITIS_IPOST_RECALL.slice(0, 15);
+const UV_IPOST_BACT_MCQ = UVEITIS_IPOST_MCQ.slice(0, 13);
+
 export const RECALL: Record<string, RecallQ[]> = {
   "cornea/cornea-mannis/part1": CORNEA_BASIC_RECALL,
   "cornea/cornea-mannis/part4": CORNEA_MEDS_RECALL,
@@ -3643,12 +3659,14 @@ export const RECALL: Record<string, RecallQ[]> = {
   "retina/retina-vitreous/part3": BCSC_CSC_RECALL,
   "retina/retina-vitreous/part4": RETINA_HTN_RECALL,
   "retina/retina-vitreous/part5": RETINA_RAO_RECALL,
-  "uveitis/bcsc-uveitis/part1": UVEITIS_TOXO_RECALL,
-  "uveitis/uveitis-infectious-post/part1": UVEITIS_IPOST_RECALL,
-  "uveitis/uveitis-noninfectious/part1": UVEITIS_NONINF_RECALL,
-  "uveitis/uveitis-viral/part1": UVEITIS_VIRAL_RECALL,
+  "uveitis/uveitis-anterior/part1": UV_VIRAL_ANT_RECALL,
+  "uveitis/uveitis-anterior/part2": UV_SCLERITIS_RECALL,
+  "uveitis/uveitis-posterior/part1": UV_IPOST_BACT_RECALL,
+  "uveitis/uveitis-posterior/part2": UVEITIS_TOXO_RECALL,
+  "uveitis/uveitis-posterior/part3": UV_NONINF_POST_RECALL,
+  "uveitis/uveitis-posterior/part4": UV_VIRAL_POST_RECALL,
   "uveitis/uveitis-complications/part1": UVEITIS_COMPLIC_RECALL,
-  "uveitis/uveitis-approach/part1": UVEITIS_APPROACH_RECALL,
+  "uveitis/uveitis-complications/part2": UVEITIS_APPROACH_RECALL,
   "neuro-oph/bcsc-neuro/part1": NEURO_NYSTAGMUS_RECALL,
   "neuro-oph/bcsc-neuro/part2": NEURO_NYS2_RECALL,
   "neuro-oph/bcsc-neuro/part3": NEURO_NYS3_RECALL,
@@ -3700,12 +3718,14 @@ export const MCQS: Record<string, MCQ[]> = {
   "retina/retina-vitreous/part3": BCSC_CSC_MCQ,
   "retina/retina-vitreous/part4": RETINA_HTN_MCQ,
   "retina/retina-vitreous/part5": RETINA_RAO_MCQ,
-  "uveitis/bcsc-uveitis/part1": UVEITIS_TOXO_MCQ,
-  "uveitis/uveitis-infectious-post/part1": UVEITIS_IPOST_MCQ,
-  "uveitis/uveitis-noninfectious/part1": UVEITIS_NONINF_MCQ,
-  "uveitis/uveitis-viral/part1": UVEITIS_VIRAL_MCQ,
+  "uveitis/uveitis-anterior/part1": UV_VIRAL_ANT_MCQ,
+  "uveitis/uveitis-anterior/part2": UV_SCLERITIS_MCQ,
+  "uveitis/uveitis-posterior/part1": UV_IPOST_BACT_MCQ,
+  "uveitis/uveitis-posterior/part2": UVEITIS_TOXO_MCQ,
+  "uveitis/uveitis-posterior/part3": UV_NONINF_POST_MCQ,
+  "uveitis/uveitis-posterior/part4": UV_VIRAL_POST_MCQ,
   "uveitis/uveitis-complications/part1": UVEITIS_COMPLIC_MCQ,
-  "uveitis/uveitis-approach/part1": UVEITIS_APPROACH_MCQ,
+  "uveitis/uveitis-complications/part2": UVEITIS_APPROACH_MCQ,
   "neuro-oph/bcsc-neuro/part1": NEURO_NYSTAGMUS_MCQ,
   "neuro-oph/bcsc-neuro/part2": NEURO_NYS2_MCQ,
   "neuro-oph/bcsc-neuro/part3": NEURO_NYS3_MCQ,
