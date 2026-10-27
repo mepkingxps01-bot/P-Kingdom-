@@ -72,6 +72,15 @@ export default function BookPage() {
                   </div>
                   {revealed.has(q.id) && (
                     <div className="mt-3 pt-3 border-t border-slate-700">
+                      {q.image && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={q.image}
+                          alt={q.imageAlt ?? ""}
+                          loading="lazy"
+                          className="mb-3 w-full max-w-sm rounded-lg border border-slate-700"
+                        />
+                      )}
                       <p className={`text-sm ${topic.answerText} leading-relaxed`}>{q.answer}</p>
                     </div>
                   )}

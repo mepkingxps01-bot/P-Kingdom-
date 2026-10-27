@@ -145,6 +145,15 @@ export default function MCQQuiz({ pool, count, topic, backHref, backLabel, homeH
                   <span className="text-slate-500 mr-2">{idx + 1}.</span>
                   {q.question}
                 </p>
+                {q.image && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={q.image}
+                    alt={q.imageAlt ?? ""}
+                    loading="lazy"
+                    className="mb-4 w-full max-w-sm rounded-lg border border-slate-700"
+                  />
+                )}
                 <div className="space-y-2">
                   {q.options.map((opt, i) => {
                     const isSelected = chosen === i;
