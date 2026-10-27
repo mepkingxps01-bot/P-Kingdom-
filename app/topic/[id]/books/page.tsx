@@ -64,6 +64,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Board Review",
     },
+    {
+      id: "uveitis-infectious-post",
+      title: "Uveitis: Infectious Posterior Uveitis",
+      author: "CMU Ophthalmology · AAO BCSC 9",
+      edition: "2026",
+      cover: "/books/uveitis-infectious-post.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
   ],
   "neuro-oph": [
     {

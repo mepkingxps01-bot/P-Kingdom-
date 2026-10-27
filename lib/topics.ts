@@ -269,6 +269,22 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "uveitis-infectious-post": {
+    id: "uveitis-infectious-post",
+    title: "Uveitis: Infectious Posterior Uveitis",
+    author: "CMU Ophthalmology · AAO BCSC 9",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Infectious Posterior Uveitis",
+        subtitle: "Syphilis (ASPPC · Hutchinson) · Tuberculosis (Tubercles · Tuberculoma · IGRA/QFT) · Bartonella (Parinaud · Neuroretinitis) · Toxoplasmosis (Headlight in the Fog · Kyrieleis) · with clinical images",
+        questions: 19,
+        mcq: 19,
+        status: "available",
+      },
+    ],
+  },
   "bcsc-uveitis": {
     id: "bcsc-uveitis",
     title: "BCSC Section 9: Uveitis and Ocular Inflammation",
