@@ -166,6 +166,16 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       questions: 0,
       tag: "Lecture Deck",
     },
+    {
+      id: "bcsc-neuro-cases",
+      title: "Neuro-Ophthalmology: Clinical Cases & Approach",
+      author: "AAO BCSC 5 · Walsh & Hoyt",
+      edition: "2026",
+      cover: "/books/bcsc-neuro-cases.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Cases",
+    },
   ],
 };
 

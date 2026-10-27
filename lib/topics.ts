@@ -333,6 +333,22 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
       },
     ],
   },
+  "bcsc-neuro-cases": {
+    id: "bcsc-neuro-cases",
+    title: "Neuro-Ophthalmology: Clinical Cases & Approach",
+    author: "AAO BCSC 5 · Walsh & Hoyt",
+    edition: "2026",
+    parts: [
+      {
+        id: "part1",
+        title: "Clinical Cases & Approach",
+        subtitle: "Worked vignettes: Localize (Afferent/Efferent) → Differential → Investigations → Diagnosis → Next Step · Optic Neuritis · CN III (Pupil Rule) · GCA/NAION · IIH · INO · Chiasm · Occipital · MG · CN IV · LHON",
+        questions: 12,
+        mcq: 16,
+        status: "available",
+      },
+    ],
+  },
   "bcsc-neuro": {
     id: "bcsc-neuro",
     title: "BCSC Section 5: Neuro-Ophthalmology",
