@@ -514,16 +514,17 @@ export const MEQ_STATIONS: MeqStation[] = [
       },
       {
         id: "8e",
-        reveal: "A different patient: a 25-year-old woman with bilateral floaters. Vitreous cells 2+, inferior 'snowballs' and a white exudate over the inferior pars plana. Anterior chamber is quiet.",
-        prompt: "Name the condition and its SUN classification. List associated diseases, the main vision-threatening complication, and the stepwise treatment.",
+        reveal: "A different patient: a 25-year-old woman with bilateral floaters and VA 20/60 OU. Vitreous cells 2+, inferior 'snowballs' and a white exudate over the inferior pars plana. Anterior chamber is quiet.",
+        prompt: "Name the condition and its SUN classification. List associated diseases, the main vision-threatening complications, and the stepwise treatment.",
         marks: 5,
         key: [
-          { point: "Intermediate uveitis — primary site of inflammation is the vitreous; 'pars planitis' when snowbank/snowballs and no systemic disease", marks: 1 },
-          { point: "Associations: multiple sclerosis, sarcoidosis", marks: 1 },
-          { point: "Exclude infection: syphilis, TB, Lyme (± toxocara in children)", marks: 1 },
-          { point: "Main cause of visual loss: cystoid macular oedema (also vitreous haemorrhage, RD, cataract)", marks: 1 },
-          { point: "Treat when vision-threatening: periocular/intravitreal steroid → systemic steroid / IMT (e.g. MTX, adalimumab) → peripheral laser/cryo or vitrectomy for refractory disease", marks: 1 },
+          { point: "Intermediate uveitis (SUN: vitreous is the primary site); pars planitis = the idiopathic form with snowbank/snowballs (85–90% of IU) — usually age <40, ~80% bilateral", marks: 1 },
+          { point: "Associations: multiple sclerosis, sarcoidosis; infections — syphilis, TB, peripheral toxocariasis, Bartonella, Lyme; masquerade — primary CNS/vitreoretinal lymphoma", marks: 1 },
+          { point: "Cystoid macular oedema is the main cause of visual loss; also ERM, vitreous haemorrhage from peripheral NV, RD, vasoproliferative tumour, retinoschisis, cataract, band keratopathy", marks: 1 },
+          { point: "Treat when VA <20/40 or CME: corticosteroids first-line — unilateral → local (posterior sub-Tenon or intravitreal triamcinolone); bilateral → systemic", marks: 1 },
+          { point: "Steroid-sparing IMT (methotrexate, cyclosporine); vitrectomy for dense vitreous opacity, VH, traction RD or refractory CME", marks: 1 },
         ],
+        pearl: "Get an MRI brain if MS is suspected — and avoid anti-TNF agents in MS-associated intermediate uveitis.",
       },
     ],
   },
@@ -536,8 +537,9 @@ export const MEQ_STATIONS: MeqStation[] = [
     kingdom: "uveitis",
     marks: 25,
     minutes: 15,
-    stem: "A 38-year-old man has had blurred vision and photopsia in his right eye for 2 weeks. VA OD 20/200, OS 20/20. Mild anterior chamber and vitreous cells OD. A healed skin rash on his palms was noticed a month ago.",
+    stem: "A 38-year-old man has had blurred vision and photopsia in his right eye for 2 weeks. VA OD 20/200, OS 20/20. Mild anterior chamber and vitreous cells OD. He also has a scaly rash on both palms.",
     images: [
+      { src: "/meq/skin-palms.jpg", caption: "Palms" },
       { src: "/meq/posterior-fundus.jpg", caption: "Right fundus" },
       { src: "/meq/posterior-faf.jpg", caption: "Fundus autofluorescence" },
       { src: "/meq/posterior-oct.jpg", caption: "OCT through the macula" },
@@ -545,13 +547,13 @@ export const MEQ_STATIONS: MeqStation[] = [
     parts: [
       {
         id: "9a",
-        prompt: "Describe the multimodal imaging and give the diagnosis.",
+        prompt: "Describe the fundus imaging and give the diagnosis. How does the skin finding help?",
         marks: 4,
         key: [
           { point: "Large, yellowish, placoid macular lesion at the level of the RPE", marks: 1 },
           { point: "FAF: hyperautofluorescent lesion with stippling", marks: 1 },
           { point: "OCT: disruption of the ellipsoid zone/outer retina with nodular RPE hyperreflectivity", marks: 1 },
-          { point: "Acute syphilitic posterior placoid chorioretinitis (ASPPC) — ocular syphilis", marks: 1 },
+          { point: "Acute syphilitic posterior placoid chorioretinitis (ASPPC) — ocular syphilis; palmar rash = secondary syphilis", marks: 1 },
         ],
       },
       {
