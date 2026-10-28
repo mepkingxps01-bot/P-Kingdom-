@@ -65,7 +65,7 @@ const topics = [
   {
     id: "neuro-oph",
     name: "Neuro-Ophthalmology",
-    description: "Nystagmus, pupils, optic nerve & pathways",
+    description: "Pupils, optic nerve, emergencies & diplopia",
     books: 1,
     xp: 0,
     level: 1,
