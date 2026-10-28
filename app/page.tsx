@@ -65,7 +65,7 @@ const topics = [
   {
     id: "neuro-oph",
     name: "Neuro-Ophthalmology",
-    description: "Nystagmus, pupils, optic nerve & pathways",
+    description: "Pupils, optic nerve, emergencies & diplopia",
     books: 1,
     xp: 0,
     level: 1,
@@ -91,6 +91,20 @@ export default function Home() {
       </header>
 
       <section className="px-6 py-10 max-w-6xl mx-auto">
+        <Link
+          href="/meq"
+          className="mb-8 flex items-center justify-between gap-4 rounded-2xl border border-indigo-800/50 bg-gradient-to-br from-indigo-950 to-slate-900 p-5 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
+        >
+          <div className="flex items-center gap-4">
+            <span className="text-3xl">📋</span>
+            <div>
+              <h3 className="text-base font-semibold">MEQ Mock Exam</h3>
+              <p className="text-sm text-slate-400">Neuro-Ophthalmology + Uveitis · 11 cases · 200 marks · 2 hours</p>
+            </div>
+          </div>
+          <span className="text-indigo-300 text-sm shrink-0">Start →</span>
+        </Link>
+
         <h2 className="text-sm font-medium text-slate-400 uppercase tracking-widest mb-6">
           Your Library
         </h2>
