@@ -2,7 +2,7 @@ export type TopicConfig = {
   id: string;
   name: string;
   xpColumn: string;
-  scene: "cornea" | "retina" | "academy" | "uveitis" | "neuro";
+  scene: "cornea" | "retina" | "academy" | "uveitis" | "neuro" | "glaucoma";
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
@@ -90,6 +90,24 @@ export const TOPICS: Record<string, TopicConfig> = {
     bar: "bg-emerald-500/60",
     buttonBg: "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/50",
     sceneBorder: "border-emerald-900/30",
+  },
+  glaucoma: {
+    id: "glaucoma",
+    name: "Glaucoma",
+    xpColumn: "glaucoma_xp",
+    scene: "glaucoma",
+    accentText: "text-sky-300",
+    accentHover: "group-hover:text-sky-300",
+    accentBright: "text-sky-400",
+    answerText: "text-sky-200",
+    optionHover: "hover:border-sky-700 hover:bg-sky-950/20",
+    optionSelected: "border-sky-500 bg-sky-950/30 text-sky-200",
+    mcqGradient: "from-sky-600 to-blue-700 hover:from-sky-500 hover:to-blue-600 shadow-sky-950/60",
+    resultBorder: "border-sky-800/40",
+    badge: "bg-sky-900/50 text-sky-300",
+    bar: "bg-sky-500/60",
+    buttonBg: "bg-sky-600 hover:bg-sky-500 shadow-sky-950/50",
+    sceneBorder: "border-sky-900/30",
   },
   "basic-science": {
     id: "basic-science",
@@ -711,6 +729,46 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
         id: "part11",
         title: "Part 11: Biochemistry & Metabolism",
         subtitle: "Ocular Biochemistry · Free Radicals · Carbohydrate & Lipid Metabolism",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
+  "glaucoma-apgg": {
+    id: "glaucoma-apgg",
+    title: "Glaucoma: Angle Closure & Beyond",
+    author: "EGS Terminology & Guidelines · Asia-Pacific Glaucoma Guidelines",
+    edition: "EGS 6th Ed · APGG",
+    parts: [
+      {
+        id: "part1",
+        title: "Chapter 1: Angle Closure Glaucoma",
+        subtitle: "Mechanisms (Pupil Block · Plateau Iris · Lens-Induced · Aqueous Misdirection) · PACS/PAC/PACG · Acute Angle Closure · Secondary Angle Closure · NVG · ICE · Malignant Glaucoma",
+        questions: 34,
+        mcq: 36,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Chapter 2: Primary Open-Angle Glaucoma",
+        subtitle: "POAG · Normal-Tension Glaucoma · Ocular Hypertension · Risk Factors · Optic Disc & RNFL · Visual Fields",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Chapter 3: Secondary Open-Angle Glaucoma",
+        subtitle: "Pseudoexfoliation · Pigmentary · Steroid-Induced · Lens-Related · Uveitic · Traumatic",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Chapter 4: Medical & Surgical Management",
+        subtitle: "Target IOP · Topical & Systemic Agents · Laser (SLT/LPI) · Trabeculectomy · Tubes · MIGS",
         questions: 0,
         mcq: 0,
         status: "coming",

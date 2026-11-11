@@ -77,6 +77,21 @@ const topics = [
     icon: "🧠",
     xpTarget: 150,
   },
+  {
+    id: "glaucoma",
+    name: "Glaucoma",
+    description: "Angle closure, IOP & optic neuropathy",
+    books: 1,
+    xp: 0,
+    level: 1,
+    gradient: "from-sky-950 to-slate-900",
+    accent: "text-sky-300",
+    border: "border-sky-800/40",
+    badge: "bg-sky-900/50 text-sky-300",
+    bar: "bg-sky-500/60",
+    icon: "💧",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {

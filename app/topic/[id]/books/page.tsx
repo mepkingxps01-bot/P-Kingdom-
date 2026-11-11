@@ -167,6 +167,18 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Cases",
     },
   ],
+  glaucoma: [
+    {
+      id: "glaucoma-apgg",
+      title: "Glaucoma: Angle Closure & Beyond",
+      author: "EGS Terminology & Guidelines · Asia-Pacific Glaucoma Guidelines",
+      edition: "EGS 6th Ed · APGG",
+      cover: "/books/glaucoma-apgg.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Lecture Deck",
+    },
+  ],
 };
 
 export default function BooksPage() {
