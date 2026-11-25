@@ -2,7 +2,7 @@ export type TopicConfig = {
   id: string;
   name: string;
   xpColumn: string;
-  scene: "cornea" | "retina" | "academy" | "uveitis" | "neuro" | "glaucoma";
+  scene: "cornea" | "retina" | "academy" | "uveitis" | "neuro" | "glaucoma" | "peds";
   // Tailwind class fragments (kept as full literals so they survive JIT purge)
   accentText: string;
   accentHover: string; // full literal, e.g. "group-hover:text-cyan-300" (kept whole so Tailwind's scanner keeps it)
@@ -90,6 +90,24 @@ export const TOPICS: Record<string, TopicConfig> = {
     bar: "bg-emerald-500/60",
     buttonBg: "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/50",
     sceneBorder: "border-emerald-900/30",
+  },
+  peds: {
+    id: "peds",
+    name: "Pediatrics & Strabismus",
+    xpColumn: "peds_xp",
+    scene: "peds",
+    accentText: "text-fuchsia-300",
+    accentHover: "group-hover:text-fuchsia-300",
+    accentBright: "text-fuchsia-400",
+    answerText: "text-fuchsia-200",
+    optionHover: "hover:border-fuchsia-700 hover:bg-fuchsia-950/20",
+    optionSelected: "border-fuchsia-500 bg-fuchsia-950/30 text-fuchsia-200",
+    mcqGradient: "from-fuchsia-600 to-pink-700 hover:from-fuchsia-500 hover:to-pink-600 shadow-fuchsia-950/60",
+    resultBorder: "border-fuchsia-800/40",
+    badge: "bg-fuchsia-900/50 text-fuchsia-300",
+    bar: "bg-fuchsia-500/60",
+    buttonBg: "bg-fuchsia-600 hover:bg-fuchsia-500 shadow-fuchsia-950/50",
+    sceneBorder: "border-fuchsia-900/30",
   },
   glaucoma: {
     id: "glaucoma",
@@ -769,6 +787,46 @@ export const BOOK_DETAILS: Record<string, BookDetail> = {
         id: "part4",
         title: "Chapter 4: Medical & Surgical Management",
         subtitle: "Target IOP · Topical & Systemic Agents · Laser (SLT/LPI) · Trabeculectomy · Tubes · MIGS",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+    ],
+  },
+  "bcsc-peds-strab": {
+    id: "bcsc-peds-strab",
+    title: "BCSC Section 6: Pediatric Ophthalmology & Strabismus",
+    author: "American Academy of Ophthalmology",
+    edition: "2023–2024",
+    parts: [
+      {
+        id: "part1",
+        title: "Chapter 1: Horizontal Deviations (Eso- & Exodeviations)",
+        subtitle: "Accommodative/Infantile/Acquired ET · AC/A Ratio · Divergence Insufficiency · CN6 Palsy · Intermittent & Constant XT · Divergence Excess · Convergence Insufficiency",
+        questions: 50,
+        mcq: 44,
+        status: "available",
+      },
+      {
+        id: "part2",
+        title: "Chapter 2: Vertical Deviations & A/V Patterns",
+        subtitle: "Oblique Dysfunction · DVD · Brown Syndrome · A & V Patterns · Superior Oblique Palsy",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part3",
+        title: "Chapter 3: Special Forms of Strabismus",
+        subtitle: "Duane · Möbius · CCDDs · Thyroid Eye Disease · Myasthenia · Restrictive & Orbital",
+        questions: 0,
+        mcq: 0,
+        status: "coming",
+      },
+      {
+        id: "part4",
+        title: "Chapter 4: Amblyopia & Pediatric Visual Development",
+        subtitle: "Amblyopia Types · Detection & Treatment · Occlusion/Atropine · Infant Vision",
         questions: 0,
         mcq: 0,
         status: "coming",

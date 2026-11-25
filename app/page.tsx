@@ -92,6 +92,21 @@ const topics = [
     icon: "💧",
     xpTarget: 150,
   },
+  {
+    id: "peds",
+    name: "Pediatrics & Strabismus",
+    description: "Eso/exodeviations, amblyopia & motility",
+    books: 1,
+    xp: 0,
+    level: 1,
+    gradient: "from-fuchsia-950 to-slate-900",
+    accent: "text-fuchsia-300",
+    border: "border-fuchsia-800/40",
+    badge: "bg-fuchsia-900/50 text-fuchsia-300",
+    bar: "bg-fuchsia-500/60",
+    icon: "🧸",
+    xpTarget: 150,
+  },
 ];
 
 export default function Home() {

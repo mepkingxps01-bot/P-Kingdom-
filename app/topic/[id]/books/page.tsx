@@ -179,6 +179,18 @@ const BOOKS_BY_TOPIC: Record<string, Book[]> = {
       tag: "Lecture Deck",
     },
   ],
+  peds: [
+    {
+      id: "bcsc-peds-strab",
+      title: "BCSC Section 6: Pediatric Ophthalmology & Strabismus",
+      author: "American Academy of Ophthalmology",
+      edition: "2023–2024",
+      cover: "/books/bcsc-peds-strab.jpg",
+      chapters: 0,
+      questions: 0,
+      tag: "Core Textbook",
+    },
+  ],
 };
 
 export default function BooksPage() {
